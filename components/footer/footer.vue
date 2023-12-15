@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { useHelpersStore as helpers } from '@/store/index.js'
+import { useHelpersStore as helpers } from '@/store/helpers.js'
 const socials = helpers().socials;
 const contacts = helpers().contacts;
 </script>

@@ -15,7 +15,7 @@
 
 <script setup>
 import DownloadApp from "./downloadApp.vue";
-import { useHelpersStore as helpers } from '@/store/index.js'
+import { useHelpersStore as helpers } from '@/store/helpers.js'
 const routes = helpers().routes;
 </script>
 

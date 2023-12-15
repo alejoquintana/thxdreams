@@ -31,20 +31,24 @@ const options = [
 		img: '',
 		title:'MAKING A DIRECT DONATION',
 		subtitle:'',
-		buttons: [{ text: 'donate', icon: 'heart' }]
+		buttons: [{url:"https://givebutter.com/Thx_Seeding_Futures", text: 'donate', icon: 'heart' }]
 	},
 	{
 		img: '',
 		title:'BECOMING AN AMBASSADOR / TEAM MEMBER',
 		subtitle:'and helping us raise money with your contacts',
-		buttons: [{ text: 'contact us', icon: 'mail' }]
+		buttons: [{url:'/Contact', text: 'contact us', icon: 'mail' }]
 	},
 	{
 		img: '',
 		title:'SPREADING OUR PROGRAM',
 		subtitle:'with your friends and colleagues, by sharing in social media',
 		buttons: [
-			{ icon: 'mail' },
+			{url:"", icon: 'facebook' },
+			{url:"", icon: 'twitter' },
+			{url:"", icon: 'mail' },
+			{url:"", icon: 'whatsapp' },
+			{url:"", icon: 'sms' },
 		]
 	},
 ]
