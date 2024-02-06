@@ -2,7 +2,6 @@ import { defineStore } from 'pinia'
 
 export const useHelpersStore = defineStore('helpers', {
 	state: () => ({
-		test: { i: 456 },
 		contacts: [
 			{
 				text: 'CALL US',
@@ -37,34 +36,50 @@ export const useHelpersStore = defineStore('helpers', {
 				icon: 'twitter'
 			},
 		],
-		routes: [
+		routesBACK: [
 			{name:"HOME",path:'/'},
 			{
-				name: "OUR DREAMS",
+				name: "Our dreams",
 				path: '/OurDreams'
 			},
 			{
-				name: "ADVISORY BOARD",
+				name: "Advisory board",
 				path: '/AdvisoryBoard'
 			},
 			{
-				name: "SEEDING FUTURES",
+				name: "Seeding futures",
 				path: '/OurPrograms'
 			},
 			{
-				name: "CONTACT-US",
+				name: "Contact-us",
 				path: '/Contact'
 			}
+		],
+		routes : [{
+				path: 'about-us',
+				name: "About US"
+			},
+			{
+				path: 'our-commitments',
+				name: "Our commitments"
+			},
+			{
+				path: 'careers',
+				name: "Careers"
+			},
+			{
+				path: 'contact-us',
+				name: "Contact Us"
+			},
 		]
 	}),
 	actions: {
-		getTest() {
-			fetch('/api/test.php')
-			.then(response => response.json())
-			.then(response => {this.test = response})
-			//.then(response => { this.test = {i:123}})
-			.catch((error) => console.log(error));
-		},
+		// getTest() {
+		// 	fetch('/api/test.php')
+		// 	.then(response => response.json())
+		// 	.then(response => {this.test = response})
+		// 	.catch((error) => console.log(error));
+		// },
 
 	},
 })
