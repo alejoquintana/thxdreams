@@ -13,9 +13,9 @@ export const useDreamersStore = defineStore('dreamers', {
 		}
 	},
 	actions: {
-		async fetchFullDreamer(dreamerPath) {
-			console.log("getApi('dreamer') + '?path=' + dreamerPath.substring(1)",getApi('dreamer') + '?path=' + dreamerPath.substring(1));
-			await fetch(getApi('dreamer') + '?path=' + dreamerPath.substring(1))
+		async fetchFullDreamer(dreamerPath,id = 0) {
+			let url = `${getApi('dreamer')}?path=${(id == 0 ? dreamerPath.substring(1) : id)}`
+			await fetch(url)
 				.then(response => response.json())
 				.then(response => {
 					this.dreamer = response
@@ -28,7 +28,7 @@ export const useDreamersStore = defineStore('dreamers', {
 				.then(response => response.json())
 				.then(response => {
 					this.CarouselDreamers = response
-					console.log("response",response);
+					// console.log("response",response);
 				})
 				.catch((error) => console.log(error));
 			return true

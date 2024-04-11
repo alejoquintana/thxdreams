@@ -1,5 +1,5 @@
 <template>
-	<v-row no-gutters class="mb-8">
+	<!-- <v-row no-gutters class="mb-8">
 		<v-col v-for="(filter, i) in filters" :key="i" class="d-flex flex-column align-center" >
 			<div class="pa-3 rounded-circle filter bg-white pointer" :class="selected == filter.type?'selected':''" @click="filterDreamers(filter.type)">
 				<v-img :src="'imgs/filters/' + filter.icon + '.png'" alt="" aspect-ratio="1" cover></v-img>
@@ -8,22 +8,23 @@
 				{{ filter.title }}
 			</p>
 		</v-col>
-	</v-row>
+	</v-row> -->
 	<div class="relative d-flex-center not-mx-w-m">
 		<div class="grid-item main">
 			<div class="items" ref="slider">
 				<div v-for="(dreamer, i) in filteredDreamers" :key="i" class="item">
 					<Transition name="width">
 						<div v-if="dreamer.type == selected || selected == ''" style="overflow: hidden;">
-							<div class="item-sizes px-2">
+							<div class="item-sizes px-12">
 								<div class="relative" @click="goToDreamer(dreamer.path)">
 									<div class="w-100 h-100 absolute z-99 d-flex-between-center text-white">
-										<p class="fs-5 lh-5 fs-7--lg-up pr-2 pr-lg-4 py-2 py-lg-4 pl-4 pl-lg-8 rounded-e-xl"
-											style="background-color: rgba(0,0,0,0.5)">
-											Meet<br />
-											<span class="first-upper">{{ dreamer.name }}!</span>
+										<p class="lh-5 py-2 py-lg-4 px-4 px-lg-8 rounded-e-xl"
+											:style="`background-color: rgba(0,0,0,0.5);min-width: ${mq('lgAndUp') ? 200 : 140}px;`">
+											<span class="fs-4 fw-300">Meet</span>
+											<br />
+											<span class="fs-6 fs-7--lg-up text-capitalize firsst-upper">{{ dreamer.name }}!</span>
 										</p>
-										<div class="pr-2 mt-14">
+										<!-- <div class="pr-2 mt-14">
 											<v-btn variant="flat" color="white" text="primary" icon="mdi-arrow-right" rounded="pill">
 												<v-icon icon="mdi-arrow-right" color="primary"></v-icon>
 											</v-btn>
@@ -31,7 +32,24 @@
 											<p class="mt-2 fs-sm-2 fw-700" style="line-height: 1rem">
 												Found<br />more here
 											</p>
-										</div>
+										</div> -->
+									</div>
+									<div class="w-100 h-100 absolute z-99 d-flex-between-end text-white">
+										<p class="lh-5 py-2 py-lg-4 px-4 px-lg-8 rounded-e-xl"
+											:style="`background-color: rgba(0,0,0,0.5);min-width: ${mq('lgAndUp') ? 200 : 140}px;`">
+											<span class="fs-4 fw-300">Meet</span>
+											<br />
+											<span class="fs-5 fs-7--lg-up first-upper">{{ dreamer.name }}!</span>
+										</p>
+										<!-- <div class="pr-2 mt-14">
+											<v-btn variant="flat" color="white" text="primary" icon="mdi-arrow-right" rounded="pill">
+												<v-icon icon="mdi-arrow-right" color="primary"></v-icon>
+											</v-btn>
+											<br />
+											<p class="mt-2 fs-sm-2 fw-700" style="line-height: 1rem">
+												Found<br />more here
+											</p>
+										</div> -->
 									</div>
 									<div class="overflow-hidden rounded-xl">
 										<v-img :src="'imgs/sonadores/' + dreamer.img" class="w-100 img-hover" cover
@@ -99,14 +117,14 @@ const filters = [
 ];
 
 const dreamers = [
-	{ type: "home", name: "Jose", img: "75.jpg" },
-	{ type: "education", name: "Valeria", img: "71.jpg" },
-	{ type: "entrepreneur", name: "Marcelo", img: "73.jpg" },
-	{ type: "education", name: "Amalia", img: "56.jpg" },
-	{ type: "home", name: "Luis", img: "66.jpg" },
-	{ type: "entrepreneur", name: "Elena", img: "134.jpg" },
-	{ type: "home", name: "Jorge", img: "76.jpg" },
-	{ type: "education", name: "Vicente", img: "111.jpg" },
+	{ quote:"His dream is to get his son a laptop for his professional development.",type: "home", name: "Jose", img: "75.jpg" },
+	{ quote:"His dream is to get his son a laptop for his professional development.",type: "education", name: "Valeria", img: "71.jpg" },
+	{ quote:"His dream is to get his son a laptop for his professional development.",type: "entrepreneur", name: "Marcelo", img: "73.jpg" },
+	{ quote:"His dream is to get his son a laptop for his professional development.",type: "education", name: "Amalia", img: "56.jpg" },
+	{ quote:"His dream is to get his son a laptop for his professional development.",type: "home", name: "Luis", img: "66.jpg" },
+	{ quote:"His dream is to get his son a laptop for his professional development.",type: "entrepreneur", name: "Elena", img: "134.jpg" },
+	{ quote:"His dream is to get his son a laptop for his professional development.",type: "home", name: "Jorge", img: "76.jpg" },
+	{ quote:"His dream is to get his son a laptop for his professional development.",type: "education", name: "Vicente", img: "111.jpg" },
 ];
 
 const filteredDreamers = ref([]);

@@ -11,7 +11,7 @@ export const useHelpersStore = defineStore('helpers', {
 			{
 				text: 'ADDRESS',
 				info: '1725 Main St Weston FL 33326 ',
-				icon: 'location'
+				icon: 'map-marker'
 			},
 			{
 				text: 'EMAIL',
@@ -21,19 +21,19 @@ export const useHelpersStore = defineStore('helpers', {
 		],
 		socials: [
 			{
-				name: 'facebook',
-				url: 'https://www.facebook.com/thxdreams/',
-				icon: 'facebook'
-			},
-			{
 				name: 'instagram',
 				url: 'https://www.instagram.com/thx_dreams/',
 				icon: 'instagram'
 			},
 			{
-				name: 'twitter',
-				url: 'https://twitter.com/thx_dreams',
-				icon: 'twitter'
+				name: 'facebook',
+				url: 'https://www.facebook.com/thxdreams/',
+				icon: 'facebook'
+			},
+			{
+				name: 'linkedin',
+				url: 'https://www.linkedin.com/company/thxdreams',
+				icon: 'linkedin'
 			},
 		],
 		routesBACK: [
@@ -55,10 +55,11 @@ export const useHelpersStore = defineStore('helpers', {
 				path: '/Contact'
 			}
 		],
-		routes : [{
-				path: 'about-us',
-				name: "About US"
-			},
+		routes: [
+			// {
+			// 	path: 'about-us',
+			// 	name: "About US"
+			// },
 			{
 				path: 'our-commitments',
 				name: "Our commitments"

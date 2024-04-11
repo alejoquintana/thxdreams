@@ -1,39 +1,35 @@
 @import './_variables.scss';
 
 @font-face {
-  font-family: "Gotham";
-  font-weight: 100;
-  src:url("assets/Gotham-Font/GothamLight.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Gotham";
-  font-weight: 300;
-  src:url("assets/Gotham-Font/GothamBook.ttf") format("truetype"),
-}
-@font-face {
-	font-family: "Gotham";
-	font-weight: 500;
-  src:url("assets/Gotham-Font/GothamMedium.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Gotham";
-  font-weight: 700;
-  src:url("assets/Gotham-Font/GothamBold.ttf") format("truetype"),
+	font-family: "Montserrat";
+	//   font-weight: 100;
+	src: url("assets/Montserrat.ttf") format("truetype");
 }
 
-body{
-	font-family: 'Gotham', sans-serif !important;
-	font-weight: 100;
+body {
+	font-family: 'Montserrat',
+		sans-serif !important;
+	font-weight: 400;
+}
+
+body.modal-open {
+	position: fixed;
+	overflow: hidden;
 }
 
 .img-shadow {
 	-webkit-filter: drop-shadow(0px 0px 10px black);
 	filter: drop-shadow(0px 0px 10px black);
 }
-.text-shadow{
+
+.text-shadow {
 	text-shadow: 0 0 5px black,
-	0 0 20px black;
+		0 0 20px black;
 }
+.cursor-pointer{
+	cursor: pointer;
+}
+
 /* width */
 html::-webkit-scrollbar {
 	width: 10px;
@@ -41,7 +37,7 @@ html::-webkit-scrollbar {
 
 /* Track */
 html::-webkit-scrollbar-track {
-	background: rgba($secondary,0.2);
+	background: rgba($secondary, 0.2);
 }
 
 /* Handle */
@@ -54,8 +50,10 @@ html::-webkit-scrollbar-thumb {
 html::-webkit-scrollbar-thumb:hover {
 	background: $primary
 }
+/* width */
 
-a{
+
+a {
 	color: inherit;
 	text-decoration: none;
 }
@@ -70,203 +68,232 @@ a{
 	opacity: 0;
 }
 
-.relative{position: relative !important;}
-.absolute{position: absolute !important;}
-.top-0{top: 0;}
-.bottom-0{bottom: 0;}
-.right-0{right: 0;}
-.left-0{left: 0;}
-.z-99{z-index: 99;}
-.z-999{z-index: 999;}
+.relative {
+	position: relative !important;
+}
 
-.first-upper::first-letter{text-transform: uppercase !important;}
+.absolute {
+	position: absolute !important;
+}
 
+.top-0 {top: 0;}
+.bottom-0 {bottom: 0;}
+.right-0 {right: 0;}
+.left-0 {left: 0;}
+.z-99 {z-index: 99;}
+.z-999 {z-index: 999;}
+.first-upper::first-letter {text-transform: uppercase !important;}
 
+.max-width,
+.mx-w {
+	max-width: $max-width;
+}
 
-.max-width,.mx-w{max-width: $max-width;}
-.max-width-margin,.mx-w-m{max-width: $max-width;}
+.max-width-margin,
+.mx-w-m {
+	max-width: $max-width;
+}
+
 @media (min-width:576px) {
-	.max-width,.mx-w{width: $max-width;}
-	.max-width-margin,.mx-w-m{
+
+	.max-width,
+	.mx-w {
 		width: $max-width;
+	}
+
+	.max-width-margin,
+	.mx-w-m {
+		max-width: $max-width;
 		margin-left: auto !important;
 		margin-right: auto !important;
 	}
 }
+
 .each-mx-w-m>*:not(.not-mx-w-m) {
 	@extend .mx-w-m
 }
 
-.fs-xs{font-size:0.5rem}
-.fs-sm{font-size:0.75rem}
-.fs-sm-2{font-size:0.9rem}
-.fs-md{font-size:1.2rem}
-.fs-lg{font-size:1.5rem}
-.fs-xl{font-size:2rem}
-.fs-xxl{font-size:2.8rem}
+.fs-xs {font-size: 0.5rem}
+.fs-sm {font-size: 0.75rem}
+.fs-sm-2 {font-size: 0.9rem}
+.fs-md {font-size: 1.2rem}
+.fs-lg {font-size: 1.5rem}
+.fs-xl {font-size: 2rem}
+.fs-xxl {font-size: 2.8rem}
+.fs-1 {font-size: 0.5rem}
+.fs-2 {font-size: 0.75rem}
+.fs-3 {font-size: 0.9rem}
+.fs-4 {font-size: 1.2rem}
+.fs-5 {font-size: 1.35rem}
+.fs-6 {font-size: 1.5rem}
+.fs-7 {font-size: 2rem}
+.fs-8 {font-size: 2.8rem}
+.fs-9 {font-size: 3.5rem}
+.fs-10 {font-size: 4rem}
+.lh-1 {line-height: 0.65rem}
+.lh-2 {line-height: 0.9rem}
+.lh-3 {line-height: 1.05rem}
+.lh-4 {line-height: 1.35rem}
+.lh-5 {line-height: 1.65rem}
+.lh-6 {line-height: 1.65rem}
+.lh-7 {line-height: 2.15rem}
+.lh-8 {line-height: 2.95rem}
+.fw-100 {font-weight: 100 !important}
+.fw-200 {font-weight: 200 !important}
+.fw-300 {font-weight: 300 !important}
+.fw-400 {font-weight: 400 !important}
+.fw-500 {font-weight: 500 !important}
+.fw-600 {font-weight: 600 !important}
+.fw-700 {font-weight: 700 !important}
+.fw-800 {font-weight: 800 !important}
+.fw-900 {font-weight: 900 !important}
 
-.fs-1{font-size:0.5rem}
-.fs-2{font-size:0.75rem}
-.fs-3{font-size:0.9rem}
-.fs-4{font-size:1.2rem}
-.fs-5{font-size:1.35rem}
-.fs-6{font-size:1.5rem}
-.fs-7{font-size:2rem}
-.fs-8{font-size:2.8rem}
-
-.lh-1{line-height:0.65rem}
-.lh-2{line-height:0.9rem}
-.lh-3{line-height:1.05rem}
-.lh-4{line-height:1.35rem}
-.lh-5{line-height:1.65rem}
-.lh-6{line-height:1.65rem}
-.lh-7{line-height:2.15rem}
-.lh-8{line-height:2.95rem}
-
-.fw-100{font-weight:100 !important}
-.fw-200{font-weight:200 !important}
-.fw-300{font-weight:300 !important}
-.fw-400{font-weight:400 !important}
-.fw-500{font-weight:500 !important}
-.fw-600{font-weight:600 !important}
-.fw-700{font-weight:700 !important}
-.fw-800{font-weight:800 !important}
-.fw-900{font-weight:900 !important}
-
-
-.d-flex-center{
+.d-flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.d-flex-between-center{
+
+.d-flex-between-center {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
-.d-flex-between-end{
+.d-flex-center-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.d-flex-between-end {
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-between;
 }
 
 // xs	< 600px
-@media (max-width:600px){
-	
-}
+@media (max-width:600px) {}
 
 // sm	600px > < 960px
 @media (min-width:600px) and (max-width:960px) {
-	.fw-100--sm{font-weight:100 !important}
-	.fw-200--sm{font-weight:200 !important}
-	.fw-300--sm{font-weight:300 !important}
-	.fw-400--sm{font-weight:400 !important}
-	.fw-500--sm{font-weight:500 !important}
-	.fw-600--sm{font-weight:600 !important}
-	.fw-700--sm{font-weight:700 !important}
-	.fw-800--sm{font-weight:800 !important}
-	.fw-900--sm{font-weight:900 !important}
+	.fw-100--sm {font-weight: 100 !important}
+	.fw-200--sm {font-weight: 200 !important}
+	.fw-300--sm {font-weight: 300 !important}
+	.fw-400--sm {font-weight: 400 !important}
+	.fw-500--sm {font-weight: 500 !important}
+	.fw-600--sm {font-weight: 600 !important}
+	.fw-700--sm {font-weight: 700 !important}
+	.fw-800--sm {font-weight: 800 !important}
+	.fw-900--sm {font-weight: 900 !important}
 }
+
 @media (max-width:960px) {
 
-	p.ls{letter-spacing: -1px;}
-	p{line-height: 20px;}
-	
-	.fs-xs--sm-down{font-size:0.5rem}
-	.fs-sm--sm-down{font-size:0.75rem}
-	.fs-sm-2--sm-down{font-size:0.9rem}
-	.fs-md--sm-down{font-size:1.2rem}
-	.fs-lg--sm-down{font-size:1.5rem}
-	.fs-xl--sm-down{font-size:2rem}
-	.fs-xxl--sm-down{font-size:2.8rem}
-
-	.fs-1--sm-down{font-size:0.5rem}
-	.fs-2--sm-down{font-size:0.75rem}
-	.fs-3--sm-down{font-size:0.9rem}
-	.fs-4--sm-down{font-size:1.2rem}
-	.fs-5--sm-down{font-size:1.35rem}
-	.fs-6--sm-down{font-size:1.5rem}
-	.fs-7--sm-down{font-size:2rem}
-	.fs-8--sm-down{font-size:2.8rem}
-
-	.fw-100--sm-down{font-weight:100 !important}
-	.fw-200--sm-down{font-weight:200 !important}
-	.fw-300--sm-down{font-weight:300 !important}
-	.fw-400--sm-down{font-weight:400 !important}
-	.fw-500--sm-down{font-weight:500 !important}
-	.fw-600--sm-down{font-weight:600 !important}
-	.fw-700--sm-down{font-weight:700 !important}
-	.fw-800--sm-down{font-weight:800 !important}
-	.fw-900--sm-down{font-weight:900 !important}
+	p.ls {letter-spacing: -1px;}
+	p {line-height: 25px;}
+	.fs-xs--sm-down {font-size: 0.5rem}
+	.fs-sm--sm-down {font-size: 0.75rem}
+	.fs-sm-2--sm-down {font-size: 0.9rem}
+	.fs-md--sm-down {font-size: 1.2rem}
+	.fs-lg--sm-down {font-size: 1.5rem}
+	.fs-xl--sm-down {font-size: 2rem}
+	.fs-xxl--sm-down {font-size: 2.8rem}
+	.fs-1--sm-down {font-size: 0.5rem}
+	.fs-2--sm-down {font-size: 0.75rem}
+	.fs-3--sm-down {font-size: 0.9rem}
+	.fs-4--sm-down {font-size: 1.2rem}
+	.fs-5--sm-down {font-size: 1.35rem}
+	.fs-6--sm-down {font-size: 1.5rem}
+	.fs-7--sm-down {font-size: 2rem}
+	.fs-8--sm-down {font-size: 2.8rem}
+	.fw-100--sm-down {font-weight: 100 !important}
+	.fw-200--sm-down {font-weight: 200 !important}
+	.fw-300--sm-down {font-weight: 300 !important}
+	.fw-400--sm-down {font-weight: 400 !important}
+	.fw-500--sm-down {font-weight: 500 !important}
+	.fw-600--sm-down {font-weight: 600 !important}
+	.fw-700--sm-down {font-weight: 700 !important}
+	.fw-800--sm-down {font-weight: 800 !important}
+	.fw-900--sm-down {font-weight: 900 !important}
 }
 
 // md	960px > < 1280px
-@media (min-width:960px) and (max-width:1280px) {
-	
-}
+@media (min-width:960px) and (max-width:1280px) {}
 
 // lg	1280px > < 1920px
 @media (min-width:1280px) and (max-width:1920px) {
-	.fw-100--lg{font-weight:100 !important}
-	.fw-200--lg{font-weight:200 !important}
-	.fw-300--lg{font-weight:300 !important}
-	.fw-400--lg{font-weight:400 !important}
-	.fw-500--lg{font-weight:500 !important}
-	.fw-600--lg{font-weight:600 !important}
-	.fw-700--lg{font-weight:700 !important}
-	.fw-800--lg{font-weight:800 !important}
-	.fw-900--lg{font-weight:900 !important}
+	.fw-100--lg {font-weight: 100 !important}
+	.fw-200--lg {font-weight: 200 !important}
+	.fw-300--lg {font-weight: 300 !important}
+	.fw-400--lg {font-weight: 400 !important}
+	.fw-500--lg {font-weight: 500 !important}
+	.fw-600--lg {font-weight: 600 !important}
+	.fw-700--lg {font-weight: 700 !important}
+	.fw-800--lg {font-weight: 800 !important}
+	.fw-900--lg {font-weight: 900 !important}
 }
-@media (min-width:1280px) {
-	.fs-1--lg-up{font-size:0.5rem}
-	.fs-2--lg-up{font-size:0.75rem}
-	.fs-3--lg-up{font-size:0.9rem}
-	.fs-4--lg-up{font-size:1.2rem}
-	.fs-5--lg-up{font-size:1.35rem}
-	.fs-6--lg-up{font-size:1.5rem}
-	.fs-7--lg-up{font-size:2rem}
-	.fs-8--lg-up{font-size:2.8rem}
 
-	.fw-100--lg-up{font-weight:100 !important}
-	.fw-200--lg-up{font-weight:200 !important}
-	.fw-300--lg-up{font-weight:300 !important}
-	.fw-400--lg-up{font-weight:400 !important}
-	.fw-500--lg-up{font-weight:500 !important}
-	.fw-600--lg-up{font-weight:600 !important}
-	.fw-700--lg-up{font-weight:700 !important}
-	.fw-800--lg-up{font-weight:800 !important}
-	.fw-900--lg-up{font-weight:900 !important}
+@media (min-width:1280px) {
+	.fs-1--lg-up {font-size: 0.5rem}
+	.fs-2--lg-up {font-size: 0.75rem}
+	.fs-3--lg-up {font-size: 0.9rem}
+	.fs-4--lg-up {font-size: 1.2rem}
+	.fs-5--lg-up {font-size: 1.35rem}
+	.fs-6--lg-up {font-size: 1.5rem}
+	.fs-7--lg-up {font-size: 2rem}
+	.fs-8--lg-up {font-size: 2.8rem}
+	.fw-100--lg-up {font-weight: 100 !important}
+	.fw-200--lg-up {font-weight: 200 !important}
+	.fw-300--lg-up {font-weight: 300 !important}
+	.fw-400--lg-up {font-weight: 400 !important}
+	.fw-500--lg-up {font-weight: 500 !important}
+	.fw-600--lg-up {font-weight: 600 !important}
+	.fw-700--lg-up {font-weight: 700 !important}
+	.fw-800--lg-up {font-weight: 800 !important}
+	.fw-900--lg-up {font-weight: 900 !important}
 }
 
 // xl	1920px > < 2560px
-@media (min-width:1920px) and (max-width:2560px) {
-
-}
+@media (min-width:1920px) and (max-width:2560px) {}
 
 
 // xxl > 2560px
-@media (min-width:600px) {
+@media (min-width:600px) {}
 
-}
-
-.hover-1,.hover-2,.hover-3,.hover-4,.hover-5,.hover-6,.hover-7,.hover-8,.hover-9,.hover-10{
+.hover-1,
+.hover-2,
+.hover-3,
+.hover-4,
+.hover-5,
+.hover-6,
+.hover-7,
+.hover-8,
+.hover-9,
+.hover-10 {
 	transition: all 500ms;
 }
-.hover-1:hover{transform: scale(1.1);}
-.hover-2:hover{transform: scale(1.2);}
-.hover-3:hover{transform: scale(1.3);}
-.hover-4:hover{transform: scale(1.4);}
-.hover-5:hover{transform: scale(1.5);}
-.hover-6:hover{transform: scale(1.6);}
-.hover-7:hover{transform: scale(1.7);}
-.hover-8:hover{transform: scale(1.8);}
-.hover-9:hover{transform: scale(1.9);}
-.hover-10:hover{transform: scale(2);}
 
-.pointer{
-	cursor: pointer;
+.hover-1:hover {	transform: scale(1.1);}
+.hover-2:hover {	transform: scale(1.2);}
+.hover-3:hover {	transform: scale(1.3);}
+.hover-4:hover {	transform: scale(1.4);}
+.hover-5:hover {	transform: scale(1.5);}
+.hover-6:hover {	transform: scale(1.6);}
+.hover-7:hover {	transform: scale(1.7);}
+.hover-8:hover {	transform: scale(1.8);}
+.hover-9:hover {	transform: scale(1.9);}
+.hover-10:hover {	transform: scale(2);}
+.pointer {	cursor: pointer;}
+
+.bg-primary-05 {background-color: rgba($primary, 0.5);}
+.bg-secondary-05 {background-color: rgba($secondary, 0.5);}
+.bg-primary-75 {background-color: rgba($primary, 0.75);}
+.bg-secondary-75 {background-color: rgba($secondary, 0.75);}
+.bg-light{
+	background-color: $light;
 }
 
-.bg-primary-05{
-	background-color: $light;
+.text-capitalize,
+.first-word-upper {
+	text-transform: capitalize;
 }

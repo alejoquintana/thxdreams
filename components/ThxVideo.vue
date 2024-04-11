@@ -7,7 +7,7 @@
 				</div>
 			</div>
 		</Transition>
-		<video ref="video" class="rounded-xl overflow-hidden" src="/imgs/video/thx_b2c.mp4"
+		<video ref="video" class="rounded-xl overflow-hidden border-op" src="/imgs/video/thx_b2c.mp4"
 			poster="/imgs/video/thx_b2c.portada.png" width="100%">
 			Sorry, your browser doesn't support embedded videos, but don't worry, you can
 			<a href="/imgs/video/thx_b2c.mp4">download it</a>
@@ -31,4 +31,9 @@ function playVideo() {
 </script>
 
 <style lang="scss" scoped>
+@media (min-width: 900px) {
+	.border-op{
+	  border: 40px solid #00000088;
+  }
+}
 </style>
