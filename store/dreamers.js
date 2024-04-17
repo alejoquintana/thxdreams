@@ -28,7 +28,6 @@ export const useDreamersStore = defineStore('dreamers', {
 				.then(response => response.json())
 				.then(response => {
 					this.CarouselDreamers = response
-					// console.log("response",response);
 				})
 				.catch((error) => console.log(error));
 			return true

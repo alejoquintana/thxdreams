@@ -102,7 +102,6 @@ onMounted(() => {
 		const x = e.pageX - slider.value.offsetLeft;
 		const walk = (x - startX) * 3; //scroll-fast
 		slider.value.scrollLeft = scrollLeft - walk;
-		//console.log(walk);
 	});
 });
 const slider = ref(null);

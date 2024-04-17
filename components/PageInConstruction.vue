@@ -20,7 +20,6 @@
 
 <script setup>
 const route = useRoute()
-console.log("route", route);
 const title = route.name.replace('-', ' ')
 useHead({
 	title: title.charAt(0).toUpperCase()

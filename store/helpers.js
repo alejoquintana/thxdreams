@@ -56,17 +56,27 @@ export const useHelpersStore = defineStore('helpers', {
 			}
 		],
 		routes: [
-			// {
-			// 	path: 'about-us',
-			// 	name: "About US"
-			// },
+			{
+				name: "Our dreams",
+				path: 'our-dreams'
+			},
+			{
+				name: "Advisory board",
+				path: 'advisory-board'
+			},
+			{
+				name: "Seeding futures",
+				path: 'seeding-futures'
+			},
 			{
 				path: 'our-commitments',
-				name: "Our commitments"
+				name: "Our commitments",
+				nav: false
 			},
 			{
 				path: 'careers',
-				name: "Careers"
+				name: "Careers",
+				nav: false
 			},
 			{
 				path: 'contact-us',
@@ -74,6 +84,17 @@ export const useHelpersStore = defineStore('helpers', {
 			},
 		]
 	}),
+	getters: {
+		navRoutes: (state) => {
+			return state.routes.filter(route =>
+			//{
+				//console.log("route.nav",route.nav);
+				//return
+				route.nav == undefined
+			//}
+			)
+		}
+	},
 	actions: {
 		// getTest() {
 		// 	fetch('/api/test.php')

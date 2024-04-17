@@ -89,7 +89,6 @@ onMounted(() => {
 		const x = e.pageX - slider.value.offsetLeft;
 		const walk = (x - startX) * 3; //scroll-fast
 		slider.value.scrollLeft = scrollLeft - walk;
-		//console.log(walk);
 	});
 });
 const slider = ref(null); let isDown = false; let startX; let scrollLeft;
@@ -97,7 +96,6 @@ const showModal = ref(false);
 // const dreamer_images = dreamersStore.dreamer.images.slice(0, 3)
 const selected = ref('')
 function goToDreamer(id) {
-	console.log("id", id);
 	showModal.value = true
 	dreamersStore.fetchFullDreamer('', id)
 	//useRouter().push({ path: '/'+path })

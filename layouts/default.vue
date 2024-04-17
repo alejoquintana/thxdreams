@@ -1,6 +1,6 @@
 <template>
 	<v-app>
-		<!-- <NavBar></NavBar> -->
+		<NavBar></NavBar>
 		<main>
 			<slot></slot>
 		</main>
@@ -9,6 +9,6 @@
 </template>
 
 <script setup>
+const languagesStore = useLanguagesStore()
+languagesStore.fetchLanguages()
 </script>
-
-<style lang="scss" scoped></style>

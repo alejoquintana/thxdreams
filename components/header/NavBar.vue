@@ -37,7 +37,7 @@
 
 <script setup>
 const PageRoute = useRoute()
-const routes = useHelpersStore().routes;
+const routes = useHelpersStore().navRoutes;
 const imgStyle = ref(0)
 const headerStyle = ref(0)
 const showSideMenu = ref(false)

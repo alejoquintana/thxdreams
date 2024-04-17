@@ -49,7 +49,6 @@ const route = useRoute()
 import { storeToRefs } from 'pinia'
 
 const dreamersStore = useDreamersStore()
-
 dreamersStore.fetchFullDreamer(route.path)
 
 const { dreamer } = storeToRefs(dreamersStore);
