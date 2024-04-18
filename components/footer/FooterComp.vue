@@ -1,5 +1,5 @@
 <template>
-	
+
 	<div class="footer-container bg-primary py-8 pt-lg-8 px-lg-16 px-8">
 		<v-row class="px-lg-16">
 			<v-col cols="12" lg="4">
@@ -22,8 +22,10 @@
 					<v-col cols="12" lg="6">
 						<v-row class="text-white fs-3 fs-3--lg-up fw-300">
 							<v-col cols="12" lg="12" v-for="contact,i in contacts" :key="i">
-								<v-icon :icon="'mdi-'+contact.icon" size="large" color="white"></v-icon>
-								{{ contact.info}}
+								<a :href="contact.href" target="_blank">
+									<v-icon :icon="'mdi-'+contact.icon" size="large" color="white"></v-icon>
+									{{ contact.info}}
+								</a>
 							</v-col>
 							<!-- <v-col cols="12" lg="12">
 								<v-icon icon="mdi-arrow-right" size="large" color="white"></v-icon>
@@ -62,9 +64,7 @@
 
 <script setup>
 //import { useHelpersStore as helpers } from '@/store/helpers.js'
-const socials = useHelpersStore().socials;
-const contacts = useHelpersStore().contacts;
-const routes = useHelpersStore().routes;
+const { socials, contacts, routes } = useHelpersStore();
 // const routes = [
 // 	{ path: 'about-us', name: "About US" },
 // 	{ path: 'our-commitments', name: "Our commitments" },

@@ -15,7 +15,7 @@ export const useLanguagesStore = defineStore('languages', {
 		fetchLanguages() {
 			if (!this.fetched) {
 
-				fetch(`/languages/texts-${this.language}.json`)
+				fetch(`http://localhost:3000/languages/texts-${this.language}.json`)
 					.then(response => response.json())
 					.then(response => {
 						this.ourDreams = response.ourDreams
@@ -23,7 +23,6 @@ export const useLanguagesStore = defineStore('languages', {
 						this.seedingFutures = response.seedingFutures
 						this.ContactUs = response.ContactUs
 						this.fetched = true
-						console.log("1", 1);
 					})
 					.catch((error) => console.log(error));
 			}
