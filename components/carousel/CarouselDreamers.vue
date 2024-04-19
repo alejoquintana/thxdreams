@@ -1,67 +1,56 @@
 <template>
-	<!-- <v-row no-gutters class="mb-8">
-		<v-col v-for="(filter, i) in filters" :key="i" class="d-flex flex-column align-center" >
-			<div class="pa-3 rounded-circle filter bg-white pointer" :class="selected == filter.type?'selected':''" @click="filterDreamers(filter.type)">
-				<v-img :src="'imgs/filters/' + filter.icon + '.png'" alt="" aspect-ratio="1" cover></v-img>
-			</div>
-			<p class="text-white fs-sm text-center mt-2 fw-500 pointer text-shadow"  @click="filterDreamers(filter.type)">
-				{{ filter.title }}
-			</p>
-		</v-col>
-	</v-row> -->
 	<div class="relative d-flex-center not-mx-w-m">
 		<div class="grid-item main">
 			<div class="items" ref="slider">
-				<div v-for="(dreamer, i) in filteredDreamers" :key="i" class="item">
-					<Transition name="width">
-						<div v-if="dreamer.type == selected || selected == ''" style="overflow: hidden;">
-							<div class="item-sizes px-12">
-								<div class="relative" @click="goToDreamer(dreamer.path)">
-									<div class="w-100 h-100 absolute z-99 d-flex-between-center text-white">
-										<p class="lh-5 py-2 py-lg-4 px-4 px-lg-8 rounded-e-xl"
-											:style="`background-color: rgba(0,0,0,0.5);min-width: ${mq('lgAndUp') ? 200 : 140}px;`">
-											<span class="fs-4 fw-300">Meet</span>
-											<br />
-											<span class="fs-6 fs-7--lg-up text-capitalize firsst-upper">{{ dreamer.name }}!</span>
-										</p>
-										<!-- <div class="pr-2 mt-14">
-											<v-btn variant="flat" color="white" text="primary" icon="mdi-arrow-right" rounded="pill">
-												<v-icon icon="mdi-arrow-right" color="primary"></v-icon>
-											</v-btn>
-											<br />
-											<p class="mt-2 fs-sm-2 fw-700" style="line-height: 1rem">
-												Found<br />more here
-											</p>
-										</div> -->
-									</div>
-									<div class="w-100 h-100 absolute z-99 d-flex-between-end text-white">
-										<p class="lh-5 py-2 py-lg-4 px-4 px-lg-8 rounded-e-xl"
-											:style="`background-color: rgba(0,0,0,0.5);min-width: ${mq('lgAndUp') ? 200 : 140}px;`">
-											<span class="fs-4 fw-300">Meet</span>
-											<br />
-											<span class="fs-5 fs-7--lg-up first-upper">{{ dreamer.name }}!</span>
-										</p>
-										<!-- <div class="pr-2 mt-14">
-											<v-btn variant="flat" color="white" text="primary" icon="mdi-arrow-right" rounded="pill">
-												<v-icon icon="mdi-arrow-right" color="primary"></v-icon>
-											</v-btn>
-											<br />
-											<p class="mt-2 fs-sm-2 fw-700" style="line-height: 1rem">
-												Found<br />more here
-											</p>
-										</div> -->
-									</div>
-									<div class="overflow-hidden rounded-xl">
-										<v-img :src="'imgs/sonadores/' + dreamer.img" class="w-100 img-hover" cover
-											:aspect-ratio="20 / 15"></v-img>
-									</div>
-								</div>
-							</div>
-						</div>
-					</Transition>
-				</div>
+				<DreamerCard v-for="(dreamer, i) in dreamersStore.CarouselDreamers" :key="i" :dreamer="dreamer"
+					@goToDreamer="goToDreamer">
+				</DreamerCard>
 			</div>
 		</div>
+		<Transition name="fade">
+			<modal v-if="showModal" @closeModal="closeModal()">
+				<!-- <p class="text-white">
+					{{ dreamersStore.dreamer }}
+				</p> -->
+				<v-row v-if="dreamersStore.dreamer && dreamersStore.dreamer.id" style="max-width: 800px;" class="mt-4">
+					<v-col cols="12">
+						<v-responsive :aspect-ratio="16 / 9" class="ma-auto">
+							<iframe :src="dreamersStore.dreamer.video" class="w-100 h-100 rounded-xl" webkitallowfullscreen
+								mozallowfullscreen allowfullscreen frameBorder="0"></iframe>
+						</v-responsive>
+					</v-col>
+					<v-col cols="12" class=" px-8">
+						<div class="text-white d-flex justify-space-between align-end">
+							<h1 class="">
+								{{ dreamersStore.dreamer.name }}
+							</h1>
+							<span class="fw-00">
+								{{ dreamersStore.dreamer.country }}, {{ dreamersStore.dreamer.year }}
+							</span>
+						</div>
+						<div class="text-white pt-4 fs-3--lgAndUp" v-html="dreamersStore.dreamer.text"></div>
+					</v-col>
+					<v-col cols="12" class="my-8 d-flex justify-center">
+						<!-- {{ dreamersStore.dreamer }} -->
+						<v-row>
+							<v-col cols="12" lg="4" v-for="img, i in dreamersStore.dreamer.images.slice(0, 3)" :key="i"
+								style="max-height: 330px;">
+								<v-img :src="'imgs/sonadores_fotos/' + img.id + '.jpg'" class="h-100 rounded-xl" cover></v-img>
+							</v-col>
+						</v-row>
+					</v-col>
+					<v-col cols="12" class="d-flex justify-center">
+						<a variant="outlined" href="https://www.instagram.com/thx_dreams/" size="sm"
+							class="btn btn-outlined-white text-white">
+							<p>
+								<v-icon class="pe-2" icon="mdi-instagram" color="white"></v-icon>
+								Visit as @thx_Dreams
+							</p>
+						</a>
+					</v-col>
+				</v-row>
+			</modal>
+		</Transition>
 	</div>
 </template>
 
@@ -75,15 +64,16 @@ const forceRerender = () => {
 //const carousel = ref(null);
 onMounted(() => {
 	forceRerender("moun");
-	if (mq("lgAndUp")) {
-		var autoScrolling = setInterval(() => {
-			slider.value.scroll({
-				top: 0,
-				left: slider.value.scrollLeft + 200,
-				behavior: "smooth",
-			});
-		}, 4000);
-	}
+	console.log("slider.value",slider.value);
+	if (!slider.value || !slider.value) return
+	var autoScrolling = setInterval(() => {
+		if (!slider.value || !slider.value) return
+		slider.value.scroll({
+			top: 0,
+			left: slider.value.scrollLeft + 100,
+			behavior: "smooth",
+		});
+	}, 1000);
 	slider.value.addEventListener('mousedown', (e) => {
 		clearInterval(autoScrolling);
 		isDown = true;
@@ -105,45 +95,37 @@ onMounted(() => {
 	});
 });
 const slider = ref(null);
-let isDown = false;
-let startX;
-let scrollLeft;
-
-const filters = [
-	{ type: "home", title: "Home improvement", icon: "home" },
-	{ type: "education", title: "Education", icon: "education" },
-	{ type: "entrepreneur", title: "Entrepreneurship", icon: "economy" },
-];
-
-const dreamers = [
-	{ quote:"His dream is to get his son a laptop for his professional development.",type: "home", name: "Jose", img: "75.jpg" },
-	{ quote:"His dream is to get his son a laptop for his professional development.",type: "education", name: "Valeria", img: "71.jpg" },
-	{ quote:"His dream is to get his son a laptop for his professional development.",type: "entrepreneur", name: "Marcelo", img: "73.jpg" },
-	{ quote:"His dream is to get his son a laptop for his professional development.",type: "education", name: "Amalia", img: "56.jpg" },
-	{ quote:"His dream is to get his son a laptop for his professional development.",type: "home", name: "Luis", img: "66.jpg" },
-	{ quote:"His dream is to get his son a laptop for his professional development.",type: "entrepreneur", name: "Elena", img: "134.jpg" },
-	{ quote:"His dream is to get his son a laptop for his professional development.",type: "home", name: "Jorge", img: "76.jpg" },
-	{ quote:"His dream is to get his son a laptop for his professional development.",type: "education", name: "Vicente", img: "111.jpg" },
-];
-
-const filteredDreamers = ref([]);
-filteredDreamers.value = dreamers;
-const selected = ref('')
-function filterDreamers(type) {
-	selected.value = selected.value == type ? '' : type
+let isDown = false; let startX; let scrollLeft;
+const showModal = ref(false);
+// const dreamer_images = dreamersStore.dreamer.images.slice(0, 3)
+function goToDreamer(id) {
+	showModal.value = true
+	dreamersStore.fetchFullDreamer('', id)
+	//useRouter().push({ path: '/'+path })
 }
-
-function goToDreamer(path) {
-	console.log("path",path);
+function closeModal() {
+	if (showModal.value = true) {
+		showModal.value = false
+	}
 }
 </script>
 
 <style lang="scss" scoped>
 .grid-item {
-	width: 100vw;
 	padding: 3.5em 1em;
 	font-size: 1em;
 	font-weight: 700;
+	width: 100vw;
+
+	// @media screen and (min-width: 500px) {
+	// 	width: 70vw;
+	// 	padding: 0 30vw;
+	// 	-webkit-mask-image: -webkit-linear-gradient(0deg,
+	// 			rgba(0, 0, 0, 0) 0%,
+	// 			rgba(0, 0, 0, 1) 3%,
+	// 			rgba(0, 0, 0, 1) 97%,
+	// 			rgba(0, 0, 0, 0) 100%);
+	// }
 }
 
 .main {
@@ -161,12 +143,11 @@ function goToDreamer(path) {
 	transition: all 0.2s;
 	will-change: transform;
 	user-select: none;
-	cursor: pointer;
 }
 
 .item-sizes {
 	min-height: 250px;
-	min-width: 700px;
+	min-width: 500px;
 
 	@media screen and (max-width: 500px) {
 		min-height: 200px;
@@ -176,6 +157,7 @@ function goToDreamer(path) {
 }
 
 .item {
+	//cursor: pointer;
 	display: inline-block;
 }
 
@@ -195,16 +177,18 @@ function goToDreamer(path) {
 }
 
 .width-enter-active {
-  transition: opacity 0.5s ease 0.5s;
+	transition: opacity 0.5s ease 0.5s;
 }
+
 .width-leave-active {
-  transition: opacity 0.5s ease;
+	transition: opacity 0.5s ease;
 }
 
 .width-enter-from,
 .width-leave-to {
-  opacity: 0;
+	opacity: 0;
 }
+
 // .width-enter-active {
 //   animation: width-in 1s linear;
 // }
@@ -219,13 +203,14 @@ function goToDreamer(path) {
 // 		width: 350px;
 // 	}
 // }
-.filter{
+.filter {
 	transition: all 300ms;
 	max-width: 50px;
 	border: 0px $primary solid;
 	width: 100%
 }
-.filter.selected{
+
+.filter.selected {
 	max-width: 65px;
 	border: 5px $primary solid;
 	//transform: scale(1.5);

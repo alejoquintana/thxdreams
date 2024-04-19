@@ -1,13 +1,5 @@
 <template>
-	<div class="parallax bg-gradient pt-16">
-		<div class="pt-16 px-8 px-lg-0">
-			<div class="d-flex justify-center">
-				<NuxtLink to="/">
-					<img src="/imgs/logothx-blanco.png" class="my-8 img-shadow img-size" />
-				</NuxtLink>
-			</div>
-		</div>
-
+	<ParallaxBackground>
 		<div>
 			<div v-if="seedingFutures.first_title && seedingFutures.first_subtitle" class="banner banner-primary my-6">
 				<div class="mx-w-m w-100">
@@ -16,8 +8,9 @@
 				</div>
 			</div>
 
-			<p v-if="seedingFutures.info_title" class="bg-white rounded-pill px-8 py-1 fs-7 fw-600 text-center mx-w-m my-16 text-primary-dark">{{
-				seedingFutures.info_title }}</p>
+			<p v-if="seedingFutures.info_title"
+				class="bg-white rounded-pill px-8 py-1 fs-7 fw-600 text-center mx-w-m my-16 text-primary-dark">{{
+					seedingFutures.info_title }}</p>
 
 			<v-row class="mx-w-m my-6" v-if="seedingFutures.info_article_title && seedingFutures.info_article_text">
 				<v-col cols="12" md="5">
@@ -40,7 +33,7 @@
 				seedingFutures.A_title &&
 				seedingFutures.B_title &&
 				seedingFutures.C_title &&
-				seedingFutures.D_title 
+				seedingFutures.D_title
 			" class="my-16 text-white" style="max-width: 1500px;margin: auto;">
 				<v-col v-for="item in ['A', 'B', 'C', 'D']" cols="6" md="3">
 					<div class="overflow-hidden mb-4" style="max-width: 170px;border-radius: 100%;margin: auto;">
@@ -133,12 +126,13 @@
 				<div class="mx-w-m w-100">
 					<h1>{{ seedingFutures.shop_title }}</h1>
 					<p>{{ seedingFutures.shop_subtitle }}</p>
-					<v-btn variant="flat" color="primary" class="mt-6" href="https://thx-dreams.myshopify.com/" target="_blank">{{
-						seedingFutures.shop_button }}</v-btn>
+					<v-btn variant="flat" color="primary" class="mt-6" href="https://thx-dreams.myshopify.com/"
+						target="_blank">{{
+							seedingFutures.shop_button }}</v-btn>
 				</div>
 			</div>
 		</div>
-	</div>
+	</ParallaxBackground>
 </template>
 
 <script setup>
@@ -147,33 +141,33 @@ const languagesStore = useLanguagesStore()
 languagesStore.fetchLanguages()
 
 const { seedingFutures } = storeToRefs(languagesStore);
-console.log("seedingFutures.value",seedingFutures);
+console.log("seedingFutures.value", seedingFutures);
 const donates = ref([
-		{
-			title: "donate_item_1_title",
-			buttons: [
-				{ text: "donate_item_1_button", icon: "heart", href: "https://givebutter.com/Thx_Seeding_Futures" },
-			],
-		},
-		{
-			title: "donate_item_2_title",
-			text: "donate_item_2_text",
-			buttons: [
-				{ text: "donate_item_2_button", icon: "email", href: "https://thxdreams.com/contact-us" },
-			],
-		},
-		{
-			title: "donate_item_3_title",
-			text: "donate_item_3_text",
-			buttons: [
-				{ icon: "facebook", href: "https://www.facebook.com/thxdreams/" },
-				{ icon: "twitter", href: "https://twitter.com/thx_dreams" },
-				{ icon: "email", href: "mailto:info @thxdreams.com" },
-				// {icon:"whatsapp",href:""},
-				{ icon: "message", href: "tel:+1(754)2005755" },
-			],
-		},
-	])
+	{
+		title: "donate_item_1_title",
+		buttons: [
+			{ text: "donate_item_1_button", icon: "heart", href: "https://givebutter.com/Thx_Seeding_Futures" },
+		],
+	},
+	{
+		title: "donate_item_2_title",
+		text: "donate_item_2_text",
+		buttons: [
+			{ text: "donate_item_2_button", icon: "email", href: "/contact-us" },
+		],
+	},
+	{
+		title: "donate_item_3_title",
+		text: "donate_item_3_text",
+		buttons: [
+			{ icon: "facebook", href: "https://www.facebook.com/thxdreams/" },
+			{ icon: "twitter", href: "https://twitter.com/thx_dreams" },
+			{ icon: "email", href: "mailto:info @thxdreams.com" },
+			// {icon:"whatsapp",href:""},
+			{ icon: "message", href: "tel:+1(754)2005755" },
+		],
+	},
+])
 </script>
 
 <style lang="scss" scoped>

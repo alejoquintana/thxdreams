@@ -1,12 +1,12 @@
-import {
-	defineStore
-} from 'pinia'
+import {defineStore} from 'pinia'
+import {useLanguagesStore} from './languages'
 
 export const useHelpersStore = defineStore('helpers', {
 	state: () => ({
 		years: [],
 		countries: [],
-		contacts: [{
+		contacts: [
+			{
 				text: 'CALL US',
 				info: '+1(754) 200 5755',
 				href: 'tel:+17542005755',
@@ -41,28 +41,7 @@ export const useHelpersStore = defineStore('helpers', {
 				icon: 'linkedin'
 			},
 		],
-		routesBACK: [{
-				name: "HOME",
-				path: '/'
-			},
-			{
-				name: "Our dreams",
-				path: '/OurDreams'
-			},
-			{
-				name: "Advisory board",
-				path: '/AdvisoryBoard'
-			},
-			{
-				name: "Seeding futures",
-				path: '/OurPrograms'
-			},
-			{
-				name: "Contact-us",
-				path: '/Contact'
-			}
-		],
-		routes: [{
+		routes_eng: [{
 				name: "Our dreams",
 				path: 'our-dreams'
 			},
@@ -88,11 +67,44 @@ export const useHelpersStore = defineStore('helpers', {
 				path: 'contact-us',
 				name: "Contact Us"
 			},
+		],
+		routes_esp: [{
+				name: "Nuestros sueños",
+				path: 'nuestros-suenos'
+			},
+			{
+				name: "Consejo asesor",
+				path: 'consejo-asesor'
+			},
+			{
+				name: "Sembrando futuros",
+				path: 'sembrando-futuros'
+			},
+			{
+				name: "Nuestros compromisos",
+				path: 'nuestros-compromisos',
+				nav: false
+			},
+			{
+				name: "Careras",
+				path: 'carreras',
+				nav: false
+			},
+			{
+				name: "Contactanos",
+				path: 'contactanos',
+			},
 		]
 	}),
 	getters: {
-		navRoutes: (state) => {
-			return state.routes.filter(route =>
+		getRoutes: (state) => {
+			const language = useLanguagesStore().language
+			return language == "eng" ? state.routes_eng : state.routes_esp;
+		},
+		getNavRoutes: (state) => {
+			const language = useLanguagesStore().language
+			let lang_routes = language == "eng" ? state.routes_eng : state.routes_esp;
+			return lang_routes.filter(route =>
 				//{
 				//console.log("route.nav",route.nav);
 				//return
@@ -104,9 +116,8 @@ export const useHelpersStore = defineStore('helpers', {
 	actions: {
 		async fetchFilters(column, language = null) {
 			let url = getApi('filters') + '?filter=' + column
-			if (language) {
-				url = url + '&language=' + language
-			}
+			if (useLanguagesStore().language == "eng") url = url + '&language=eng'
+			if (useLanguagesStore().language == "esp") url = url + '&language=esp'
 			await fetch(url)
 				.then(response => response.json())
 				.then(response => {

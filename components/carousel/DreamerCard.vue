@@ -1,7 +1,7 @@
 <template>
 	<div class="item">
 		<Transition name="width">
-			<div v-if="dreamer.type == selected || selected == ''" style="overflow: hidden;">
+			<div style="overflow: hidden;">
 				<div class="item-sizes px-10">
 					<div class="relative" @mouseover="showPlay = true" @mouseleave="showPlay = false">
 						<!-- <div class="w-100 h-100 absolute z-99 d-flex justify-center align-end text-white">

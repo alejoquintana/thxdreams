@@ -1,5 +1,6 @@
 <template>
-	<PageInConstruction></PageInConstruction>
+	<AdvisoryBoard v-if="false" />
+	<PageInConstruction v-else></PageInConstruction>
 </template>
 
 <script setup>

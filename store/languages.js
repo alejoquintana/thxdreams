@@ -4,7 +4,7 @@ import {
 
 export const useLanguagesStore = defineStore('languages', {
 	state: () => ({
-		language: "eng",
+		language: "esp", // eng o esp
 		fetched: false,
 		ourDreams: {},
 		advisoryBoard: {},

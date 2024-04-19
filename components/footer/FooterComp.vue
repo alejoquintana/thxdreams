@@ -11,8 +11,11 @@
 				</div>
 				<div class="d-flex-center mb-16">
 					<button class="bg-white text-primary fs-lg--sm-down  fw-500 px-5 btn-block rounded-pill btn-sm mt-6">
-						<span class="text-primary">
+						<span v-if="useLanguagesStore().language == 'eng'" class="text-primary">
 							Subscribe to our newsletter
+						</span>
+						<span v-else class="text-primary">
+							Subscribite a nuestro boletín informativo
 						</span>
 					</button>
 				</div>
@@ -63,14 +66,8 @@
 </template>
 
 <script setup>
-//import { useHelpersStore as helpers } from '@/store/helpers.js'
-const { socials, contacts, routes } = useHelpersStore();
-// const routes = [
-// 	{ path: 'about-us', name: "About US" },
-// 	{ path: 'our-commitments', name: "Our commitments" },
-// 	{ path: 'careers', name: "Careers" },
-// 	{ path: 'contact-us', name: "Contact Us" },
-// ]
+const { socials, contacts } = useHelpersStore();
+const  routes = useHelpersStore().getRoutes;
 </script>
 
 <style lang="scss" scoped>

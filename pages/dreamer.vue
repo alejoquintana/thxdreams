@@ -1,7 +1,8 @@
 <template>
-	<div @click.shift="bgToggle">
+	<div>
+
 		<PageInConstruction></PageInConstruction>
-		<div v-if="bg" class="mx-w-m">
+		<div v-if="false" class="mx-w-m">
 			<v-row v-if="dreamer" no-gutters class="my-16">
 				<v-col cols="4" class="relative">
 					<div v-if="dreamer.accomplished" class="bg-primary rounded-circle pa-1 absolute top-0 right-0">
@@ -37,14 +38,14 @@
 				</v-col>
 			</v-row>
 		</div>
-	</div>
+		</div>
 </template>
 
 <script setup>
-function bgToggle() {
-	bg.value = !bg.value
-}
-const bg = ref(false)
+useHead({
+	title: 'THX! - Dreamer'
+})
+
 const route = useRoute()
 import { storeToRefs } from 'pinia'
 
