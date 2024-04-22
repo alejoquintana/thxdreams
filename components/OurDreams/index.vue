@@ -16,30 +16,29 @@
 							<v-col cols="12" md="10">
 								<v-row no-gutters>
 									<v-col cols="12" md="3" class="px-1">
-										<v-select v-model="accomplished.selected" @blur="consoleLog('accomplished')"
-											name="accomplished" id="accomplished" :label="accomplished.label" variant="outlined"
+										<v-select v-model="accomplished.selected" name="accomplished" id="accomplished" :label="accomplished.label" variant="outlined"
 											:items="accomplished.items" item-title="title" item-value="value" hide-details
 											density="compact"></v-select>
 									</v-col>
 									<v-col cols="12" md="3" class="px-1">
-										<v-select v-model="country.selected" @blur="consoleLog('country')" name="country"
+										<v-select v-model="country.selected" name="country"
 											id="country" :label="country.label" variant="outlined" :items="country.items"
 											item-title="name" item-value="id" hide-details density="compact"></v-select>
 									</v-col>
 									<v-col cols="12" md="3" class="px-1">
-										<v-select v-model="year.selected" @blur="consoleLog('year')" name="year" id="year"
+										<v-select v-model="year.selected" name="year" id="year"
 											:label="year.label" variant="outlined" :items="year.items" hide-details
 											density="compact"></v-select>
 									</v-col>
 									<v-col cols="12" md="3" class="px-1">
-										<v-select v-model="sort.selected" @blur="consoleLog('sort')" name="sort" id="sort"
+										<v-select v-model="sort.selected" name="sort" id="sort"
 											:label="sort.label" variant="outlined" :items="sort.items" hide-details
 											density="compact"></v-select>
 									</v-col>
 								</v-row>
 							</v-col>
 							<v-col cols="12" md="2" class="pa-0 pl-1">
-								<v-btn rounded="md" color="white" block>
+								<v-btn rounded="md" color="white" block @click="goFetchDreamersShort">
 									<span v-if="useLanguagesStore().language == 'eng'">
 										FILTER
 									</span>
@@ -58,10 +57,38 @@
 					</select> -->
 			</div>
 		</div>
+		<div class="w-100 mx-w-m fs-3">
+			<v-row>
+				<v-col cols="6" md="3" v-for="dreamer in dreamersStore.dreamers">
+					<div class="relative">
+						<div v-if="dreamer.accomplished" class="absolute bg-primary rounded-circle pa-1 right-0">
+							<v-icon icon="mdi-check" color="white" size="25"></v-icon>
+						</div>
+						<div
+							class="dreamer-box rounded-circle overflow-hidden border-primary border border-lg border-opacity-100 relative">
+							<v-img :src="'imgs/sonadores/' + dreamer.id + '.jpg'" class="w-100 img-hover" cover
+								:aspect-ratio="1"></v-img>
+							<div class="country d-flex align-center flex-column">
+								<span class="fw-bold fs-4">
+									{{ dreamer.name }}
+								</span>
+								<span class="">
+									{{ dreamer.country }}
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- {{ dreamer }} -->
+				</v-col>
+			</v-row>
+		</div>
 	</ParallaxBackground>
 </template>
 
 <script setup>
+const dreamersStore = useDreamersStore()
+dreamersStore.fetchDreamersShort()
+
 useHelpersStore().fetchFilters('countries')
 useHelpersStore().fetchFilters('years')
 function consoleLog(param) {
@@ -114,10 +141,39 @@ const country = reactive(country_eng)
 const year = reactive(year_eng)
 const sort = reactive(sort_eng)
 
-
+function goFetchDreamersShort() {
+	dreamersStore.fetchDreamersShort({
+		accomplished: accomplished.value.selected,
+		country: country.value.selected,
+		year: year.value.selected,
+		sort: sort.value.selected,
+	})
+}
 </script>
 
 <style lang="scss" scoped>
+
+.country{
+	transition: all 300ms;
+	background-color: rgba($primary, 0.5);
+	color: white;
+	width: 100%;
+	height: 25%;
+	z-index: 999;
+	position: absolute;
+}
+.country{
+	bottom:-25%
+}
+.dreamer-box:hover{
+	.name{
+		top:0
+	}
+	.country{
+		bottom:0
+	}
+}
+
 :deep(.v-field) {
 	font-size: 0.875rem !important;
 }

@@ -32,6 +32,25 @@ export const useDreamersStore = defineStore('dreamers', {
 				.catch((error) => console.log(error));
 			return true
 		},
+		async fetchDreamersShort(filters = null) {
+			console.log("filters", filters);
+			let url = getApi('dreamers_short') + '?v=' + new Date().getTime()
+			if (filters) {
+				url = url + `&accomplished=${filters.accomplished}&country=${filters.country}&year=${filters.year}&sort=${filters.sort}`
+			}
+			await fetch(url)
+				.then(response => {
+					let json = response.json()
+					console.log("response", json);
+					return json
+				})
+				.then(response => {
+					console.log("response",response);
+					this.dreamers = response
+				})
+				.catch((error) => console.log(error));
+			return true
+		},
 		async paginateDreamers(page) {
 			page--
 			let perPage = 12
@@ -68,6 +87,8 @@ fetch('/api/users', {
 
 function getApi(table) {
 	if (process.env.NODE_ENV == "development") {
+		https://thxdreams.com/api/dreamers.php
+		return "https://thxdreams.com/api/" + table + ".php"
 		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php"
 	}
 	return "/api/" + table + ".php"
