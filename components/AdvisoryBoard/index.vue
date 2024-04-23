@@ -1,6 +1,31 @@
 <template>
 	<ParallaxBackground gradient>
-		advisory board
+		<div v-if="advisoryBoard.first_title && advisoryBoard.first_subtitle" class="banner banner-primary my-6">
+			<div class="mx-w-m w-100">
+				<h1>{{ advisoryBoard.first_title }}</h1>
+				<p>{{ advisoryBoard.first_subtitle }}</p>
+			</div>
+		</div>
+		<div class="mx-w-m">
+			<v-row v-if="advisors && advisors.length">
+				<v-col cols="12" md="4" v-for="advisor,i in advisors" :key="i">
+					<div class="bg-white pa-4 rounded-xl text-primary">
+						<div class="text-primary border-primary-bottom">
+							<span class="fs-4">
+								{{ advisor.name }}
+							</span>
+						</div>
+						<div>
+							<span class="text-primary fw-500">
+								{{ advisor.position }}
+							</span>
+							<div v-html="advisor.text" class="text-primary">
+							</div>
+						</div>
+					</div>
+				</v-col>
+			</v-row>
+		</div>
 	</ParallaxBackground>
 </template>
 
@@ -8,65 +33,16 @@
 import { storeToRefs } from 'pinia'
 const languagesStore = useLanguagesStore()
 languagesStore.fetchLanguages()
+const advisorsStore = useAdvisorsStore()
+advisorsStore.fetchAdvisors()
+const { advisors } = storeToRefs(advisorsStore);
 
-const { seedingFutures } = storeToRefs(languagesStore);
+
+const { advisoryBoard } = storeToRefs(languagesStore);
 </script>
 
 <style lang="scss" scoped>
-.banner {
-	padding: 24px 0;
-	display: flex;
-	justify-content: center;
-}
-
-.banner-primary {
-	background-color: $primary;
-	color: #fff;
-}
-
-.banner-white {
-	background-color: #fff;
-	color: $primary;
-}
-
-.gradient {
-	width: 100%;
-	height: 100px;
-	background-image: linear-gradient(180deg, #00000000, rgba($primary, 1));
-}
-
-$linear: linear-gradient(0deg, rgba(black, 0) 85%, rgba($primary, 0.8) 100%);
-
-.bg-gradient {
-	background-image: url('/imgs/fondo-web-thx.jpg');
-	background-color: $darker;
-}
-
-.img-size {
-	max-width: 250px
-}
-
-@media (min-width: 900px) {
-	.img-size {
-		max-width: 400px
-	}
-}
-
-
-.parallax {
-	// min-height: 500px;
-	background-attachment: fixed;
-	background-position: top;
-	// background-repeat: no-repeat;
-	//background-color: rgba($color: #FFF, $alpha: 1.0) !important;
-	background-size: cover;
-	-webkit-background-size: cover;
-	/* safari may need this */
-}
-
-@media (max-width: 960px) {
-	.parallax {
-		background-position: center;
-	}
+.border-primary-bottom{
+	border-bottom: 2px solid $primary;
 }
 </style>

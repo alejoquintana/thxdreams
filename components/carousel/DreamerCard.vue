@@ -31,8 +31,8 @@
 							</div>
 						</Transition>
 						<div class="overflow-hidden rounded-xl">
-							<v-img :src="'imgs/sonadores/' + dreamer.id + '.jpg'" class="w-100 img-hover" cover
-								:aspect-ratio="20 / 15"></v-img>
+							<v-img :src="useHelpersStore().getImagePath('sonadores/' + dreamer.id + '.jpg')"
+								class="w-100 img-hover" cover :aspect-ratio="20 / 15"></v-img>
 						</div>
 					</div>
 				</div>

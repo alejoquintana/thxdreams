@@ -35,7 +35,8 @@
 						<v-row>
 							<v-col cols="12" lg="4" v-for="img, i in dreamersStore.dreamer.images.slice(0, 3)" :key="i"
 								style="max-height: 330px;">
-								<v-img :src="'imgs/sonadores_fotos/' + img.id + '.jpg'" class="h-100 rounded-xl" cover></v-img>
+								<v-img :src="useHelpersStore().getImagePath('sonadores_fotos/' + img.id + '.jpg')"
+									class="h-100 rounded-xl" cover></v-img>
 							</v-col>
 						</v-row>
 					</v-col>

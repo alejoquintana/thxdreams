@@ -131,6 +131,9 @@ export const useHelpersStore = defineStore('helpers', {
 				.catch((error) => console.log(error));
 			return true
 		},
+		getImagePath(src) {
+			return "https://thxdreams.com/img/"+src;
+		},
 
 	},
 })
