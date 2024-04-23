@@ -7,13 +7,13 @@
     				<v-container>
 						<v-row>
 							<v-col cols="12" class="contact__contentTitle">
-								<h1>Contactanos</h1><!-- <h1>Get In Touch</h1> -->
+								<h1>Get In Touch</h1>
 							</v-col>
 							
 							<v-col cols="12" md="6">
 								<v-text-field
 									:rules="nameRules"
-									label="Nombre" 
+									label="YOUR NAME" 
 									name="name" 
 									variant="outlined"
 									id="inputName"
@@ -23,7 +23,7 @@
 							<v-col cols="12" md="6">
 								<v-text-field
 									:rules="emailRules"
-									label="E-mail"
+									label="EMAIL ADDRESS"
 									name="email" 
 									variant="outlined"
 									id="inputEmail"
@@ -31,7 +31,7 @@
 							</v-col>
 
 							<v-col cols="12" md="12">
-								<v-textarea name="message" id="inputMessage" rows="4" label="Mensaje" variant="outlined"></v-textarea>
+								<v-textarea name="message" id="inputMessage" rows="4" label="YOUR MESSAGE" variant="outlined"></v-textarea>
 							</v-col>
 
 							<v-col cols="12" md="12" id="contact__contentAlertForm" class="d-none">
@@ -40,14 +40,14 @@
 									variant="outlined"
 									>
 									<template v-slot:title>
-										<v-icon icon="mdi-alert"></v-icon> Campos invalidaos!
+										<v-icon icon="mdi-alert"></v-icon> Invalid fields!
 									</template>
-									Por favor revise todos los campos para enviar el formulario
+									Please review all fields to submit the form
 								</v-alert>
 							</v-col>
 							
 							<v-col cols="12" md="12" class="mt-0">
-								<button class="bg-white text-primary fs-lg--sm-down fw-500" type="button" id="contact__btnSubmit" @click="submitForm">Enviar mensaje</button>
+								<button class="bg-white text-primary fs-lg--sm-down fw-500" type="button" id="contact__btnSubmit" @click="submitForm">SEND MESSAGE</button>
 							</v-col>
 							
 						</v-row>
