@@ -1,20 +1,22 @@
 <template>
 	<header class="header w-100" ref="header" :style="'background:rgba(80,53,148, '+headerStyle+')'">
 		<nav class="text-center pa-6 py-3 d-flex justify-space-between">
-			<div  :style="'opacity:'+imgStyle">
+			<div :style="'opacity:'+imgStyle">
 				<NuxtLink to="/">
 					<img style="width:55px;object-fit: cover;" src="/imgs/logo_header_top-blanco.png" />
 					<!-- <v-img :width="55" cover src="/imgs/logo_header_top-blanco.png"></v-img> -->
 				</NuxtLink>
 			</div>
 			<div v-if="mq('mdAndUp')" class="d-flex-center ga-12 text-white fs-4">
-				<NuxtLink :to="'/'+route.path" v-for="route,i in routes" :key="i" class="routes hover-2" :class="{'selected': route.path == PageRoute.name}">
+				<NuxtLink :to="'/'+route.path" v-for="route,i in routes" :key="i" class="routes hover-2"
+					:class="{'selected': route.path == PageRoute.name}">
 					{{ route.name }}
 				</NuxtLink>
 			</div>
 			<div class="d-flex align-center ga-3">
 				<v-icon icon="mdi-magnify" color="white" size="x-large"></v-icon>
-				<v-icon v-if="mq('mdAndDown')" icon="mdi-menu" color="white" size="x-large" @click="showSideMenu = true"></v-icon>
+				<v-icon v-if="mq('mdAndDown')" icon="mdi-menu" color="white" size="x-large"
+					@click="showSideMenu = true"></v-icon>
 			</div>
 			<!-- <div class="d-flex justify-center ga-4" >
 				<NuxtLink v-for="(route, i) in routes" :key="i" :to="route.path">{{ route.name }}</NuxtLink>
@@ -25,11 +27,13 @@
 		<div v-if="showSideMenu" class="side-menu-comp">
 			<div class="bg-primary pa-4 pb-0" v-click-outside="logged">
 				<div class="d-flex justify-end">
-					<v-icon icon="mdi-close" color="white" size="x-large"  @click="logged"></v-icon>
+					<v-icon icon="mdi-close" color="white" size="x-large" @click="logged"></v-icon>
 				</div>
 				<div class="d-flex flex-column align-center" v-click-outside="logged">
-				<NuxtLink :to="'/'+route.path" v-for="route,i in routes" :key="i" class="ma-4 border-bottom"  :class="{ 'selected': route.path == PageRoute.name }">{{ route.name }}</NuxtLink>
-			</div>
+					<NuxtLink :to="'/'+route.path" v-for="route,i in routes" :key="i" class="ma-4 border-bottom"
+						:class="{ 'selected': route.path == PageRoute.name }" @click="showSideMenu=false">{{ route.name }}
+					</NuxtLink>
+				</div>
 			</div>
 		</div>
 	</Transition>
@@ -86,6 +90,7 @@ onBeforeUnmount(() => {
 	background-color: rgba($primary, 0.5);
 	padding: 5px 20px;
 	border: 1px solid white;
+	border-radius: 24px;
 	//text-decoration: underline;
 }
 </style>

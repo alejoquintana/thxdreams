@@ -3,33 +3,33 @@
 		<div class="banner banner-primary my-6">
 			<div class="w-100 mx-w-m fs-3">
 				<v-row align="center" no-gutters>
-					<v-col cols="12" md="2">
-						<p v-if="useLanguagesStore().language == 'eng'" class="fs-6">
+					<v-col cols="12" md="2" class="mb-4">
+						<p v-if="useLanguagesStore().language == 'eng'" class="fs-6 text-center">
 							OUR DREAMS
 						</p>
-						<p v-else class="fs-6">
+						<p v-else class="fs-6 text-center">
 							SOÑADORES
 						</p>
 					</v-col>
-					<v-col cols="12" md="10">
+					<v-col cols="12" md="10" class="px-4 px-lg-0">
 						<v-row no-gutters>
 							<v-col cols="12" md="10">
 								<v-row no-gutters>
-									<v-col cols="12" md="3" class="px-1">
+									<v-col cols="6" md="3" class="px-1 mb-4">
 										<v-select v-model="accomplished.selected" name="accomplished" id="accomplished"
 											:label="accomplished.label" variant="outlined" :items="accomplished.items"
 											item-title="title" item-value="value" hide-details density="compact"></v-select>
 									</v-col>
-									<v-col cols="12" md="3" class="px-1">
+									<v-col cols="6" md="3" class="px-1 mb-4">
 										<v-select v-model="country.selected" name="country" id="country" :label="country.label"
 											variant="outlined" :items="country.items" item-title="name" item-value="id"
 											hide-details density="compact"></v-select>
 									</v-col>
-									<v-col cols="12" md="3" class="px-1">
+									<v-col cols="6" md="3" class="px-1 mb-4">
 										<v-select v-model="year.selected" name="year" id="year" :label="year.label"
 											variant="outlined" :items="year.items" hide-details density="compact"></v-select>
 									</v-col>
-									<v-col cols="12" md="3" class="px-1">
+									<v-col cols="6" md="3" class="px-1 mb-4">
 										<v-select v-model="sort.selected" name="sort" id="sort" :label="sort.label"
 											variant="outlined" :items="sort.items" hide-details density="compact"></v-select>
 									</v-col>
@@ -55,9 +55,9 @@
 					</select> -->
 			</div>
 		</div>
-		<div class="w-100 mx-w-m fs-3">
+		<div class="relative w-100 mx-w-m fs-3 px-4 px-lg-0">
 			<v-row v-if="dreamersStore.dreamers && dreamersStore.dreamers.length">
-				<v-col cols="6" md="3" v-for="dreamer in dreamersStore.dreamers">
+				<v-col cols="6" md="3" class="pa-2" v-for="dreamer,i in dreamersStore.dreamers" :key="i">
 					<div class="relative" @click="goToDreamer(dreamer.id)">
 						<div v-if="dreamer.accomplished" class="absolute bg-primary rounded-circle pa-1 right-0">
 							<v-icon icon="mdi-check" color="white" size="25"></v-icon>

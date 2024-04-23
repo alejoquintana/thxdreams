@@ -1,5 +1,5 @@
 <template>
-	<AdvisoryBoard v-if="false" />
+	<AdvisoryBoard v-if="true" />
 	<PageInConstruction v-else></PageInConstruction>
 </template>
 
