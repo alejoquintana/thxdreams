@@ -153,7 +153,16 @@ const apply_name = ref('')
 const apply_email = ref('')
 const apply_country = ref('')
 
+const validateEmail = (email) => {
+	return email.match(
+		/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	);
+};
 function sendApply() {
+	if (!apply_name.value || !validateEmail(apply_email.value) | !apply_country.value) {
+		return
+	}
+
 	helpersStore.applyPrograms({
 		name:apply_name.value,
 		email:apply_email.value,

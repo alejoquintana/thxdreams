@@ -156,8 +156,8 @@ export const useHelpersStore = defineStore('helpers', {
 })
 
 function getApi(table) {
-	if (process.env.NODE_ENV == "development") {
+	// if (process.env.NODE_ENV == "development") {
 		return "https://thxdreams.com/api/" + table + ".php" + '?v=' + new Date().getTime()
-	}
+	// }
 	return "/api/" + table + ".php"
 }

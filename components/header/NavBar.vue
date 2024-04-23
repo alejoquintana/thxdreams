@@ -12,7 +12,10 @@
 					:class="{'selected': route.path == PageRoute.name}">
 					{{ route.name }}
 				</NuxtLink>
-				<v-select variant="outlined" name="language" id="language" hide-details @update="setLanguage()" v-model="languagesStore.language" density="comfortable" :items="[
+				<!-- {{ languagesStore.language }}
+				{{ language }}
+				<v-select variant="outlined" name="language" id="language" hide-details @update:menu="setLanguage()"
+					v-model="language" density="comfortable" :items="[
 					{
 						title: 'ES',
 						value: 'esp',
@@ -22,7 +25,7 @@
 						value: 'eng',
 					},
 				]">
-				</v-select>
+				</v-select> -->
 			</div>
 			<div class="d-flex align-center ga-3">
 
@@ -53,14 +56,17 @@
 
 <script setup>
 const PageRoute = useRoute()
-const routes = useHelpersStore().getNavRoutes;
+const routes = reactive(useHelpersStore().getNavRoutes);
 const imgStyle = ref(0)
 const headerStyle = ref(0)
 const showSideMenu = ref(false)
 const languagesStore = useLanguagesStore()
+const language = ref(languagesStore.language)
 
 function setLanguage(e) {
-	console.log("e",e);
+	languagesStore.setLanguage(language.value)
+	console.log("e", language.value);
+	routes.value = useHelpersStore().getNavRoutes
 }
 function logScroll() {
 	imgStyle.value = window.scrollY / 500;

@@ -5,6 +5,7 @@ import {
 export const useLanguagesStore = defineStore('languages', {
 	state: () => ({
 		language: "eng", // eng o esp
+		language: "eng", // eng o esp
 		fetched: false,
 		ourDreams: {},
 		advisoryBoard: {},
@@ -12,8 +13,8 @@ export const useLanguagesStore = defineStore('languages', {
 		ContactUs: {},
 	}),
 	actions: {
-		fetchLanguages() {
-			if (!this.fetched) {
+		fetchLanguages(changed = false) {
+			if (changed || !this.fetched) {
 
 				fetch(`https://thxdreams.com/api/languages/texts-${this.language}.json`)
 					.then(response => response.json())
@@ -26,6 +27,10 @@ export const useLanguagesStore = defineStore('languages', {
 					})
 					.catch((error) => console.log(error));
 			}
+		},
+		setLanguage(lang) {
+			this.language = lang
+			this.fetchLanguages(true)
 		},
 
 	},
