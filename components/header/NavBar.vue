@@ -12,8 +12,20 @@
 					:class="{'selected': route.path == PageRoute.name}">
 					{{ route.name }}
 				</NuxtLink>
+				<v-select variant="outlined" name="language" id="language" hide-details @update="setLanguage()" v-model="languagesStore.language" density="comfortable" :items="[
+					{
+						title: 'ES',
+						value: 'esp',
+					},
+					{
+						title: 'EN',
+						value: 'eng',
+					},
+				]">
+				</v-select>
 			</div>
 			<div class="d-flex align-center ga-3">
+
 				<v-icon icon="mdi-magnify" color="white" size="x-large"></v-icon>
 				<v-icon v-if="mq('mdAndDown')" icon="mdi-menu" color="white" size="x-large"
 					@click="showSideMenu = true"></v-icon>
@@ -45,7 +57,11 @@ const routes = useHelpersStore().getNavRoutes;
 const imgStyle = ref(0)
 const headerStyle = ref(0)
 const showSideMenu = ref(false)
+const languagesStore = useLanguagesStore()
 
+function setLanguage(e) {
+	console.log("e",e);
+}
 function logScroll() {
 	imgStyle.value = window.scrollY / 500;
 	headerStyle.value = window.scrollY / 500;
