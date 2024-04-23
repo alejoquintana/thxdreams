@@ -2,19 +2,21 @@
 	<ParallaxBackground>
 		<div>
 			<div v-if="seedingFutures.first_title && seedingFutures.first_subtitle" class="banner banner-primary my-6">
-				<div class="mx-w-m w-100">
+				<div class="mx-w-m w-100  px-4 px-lg-0">
 					<h1>{{ seedingFutures.first_title }}</h1>
 					<p>{{ seedingFutures.first_subtitle }}</p>
 				</div>
 			</div>
-
-			<p v-if="seedingFutures.info_title"
-				class="bg-white rounded-pill px-8 py-1 fs-7 fw-600 text-center mx-w-m my-16 text-primary-dark">{{
+			<div class="px-4 px-lg-0">
+				<p v-if="seedingFutures.info_title"
+					class="bg-white rounded-pill px-8 py-1 fs-7--lg fw-600 text-center mx-w-m my-16 text-primary-dark">{{
 					seedingFutures.info_title }}</p>
+			</div>
 
-			<v-row class="mx-w-m my-6" v-if="seedingFutures.info_article_title && seedingFutures.info_article_text">
+			<v-row class="mx-w-m my-6  px-5 px-lg-0"
+				v-if="seedingFutures.info_article_title && seedingFutures.info_article_text">
 				<v-col cols="12" md="5">
-					<div class="overflow-hidden">
+					<div class="overflow-hidden box-shadow">
 						<v-img :src="`/imgs/seeding-futures/Why.jpeg`" class="hover-1"></v-img>
 					</div>
 				</v-col>
@@ -40,7 +42,7 @@
 						<v-img :src="`/imgs/seeding-futures/${item}.jpg`" class="hover-1"></v-img>
 					</div>
 					<div class="d-flex justify-center">
-						<p class="text-center fw-bold bg-primary mb-4 px-8 py-1 rounded-pill">{{
+						<p class="text-center fs-3 fs-4--md fw-bold bg-primary mb-4 px-4 px-lg-8 py-1 rounded-pill">{{
 							seedingFutures[item + '_title'] }}</p>
 					</div>
 					<div class="d-flex justify-center fw-500 mb-4 text-shadow">
@@ -51,84 +53,90 @@
 				</v-col>
 			</v-row>
 
-			<div class="mx-w-m my-16 pa-8 bg-primary rounded-xl" v-if="
-				seedingFutures.apply_programs_title &&
-				seedingFutures.apply_programs_text &&
-				seedingFutures.apply_programs_form_title &&
-				seedingFutures.apply_programs_form_name &&
-				seedingFutures.apply_programs_form_country &&
-				seedingFutures.apply_programs_form_email &&
-				seedingFutures.apply_programs_form_button
-			">
-				<h3 class="text-center fs-7 fw-500">{{ seedingFutures.apply_programs_title }}</h3>
-				<p class="text-center ma-auto" style="max-width: 800px;">{{ seedingFutures.apply_programs_text }}</p>
-				<p class="text-center fs-4 mt-8">{{ seedingFutures.apply_programs_form_title }}</p>
-				<v-row no-gutters>
-					<v-col cols="6" class="pa-2">
-						<v-text-field class="mb-0" variant="outlined" hide-details
-							:placeholder="seedingFutures.apply_programs_form_name"></v-text-field>
-					</v-col>
-					<v-col cols="6" class="pa-2">
-						<v-text-field class="mb-0" variant="outlined" hide-details
-							:placeholder="seedingFutures.apply_programs_form_country"></v-text-field>
-					</v-col>
-					<v-col cols="6" class="pa-2">
-						<v-text-field class="mb-0" variant="outlined" hide-details
-							:placeholder="seedingFutures.apply_programs_form_email"></v-text-field>
-					</v-col>
-					<v-col cols="6" class="pa-2">
-						<v-btn block class="h-100" rounded="sm" color="white">
-							{{ seedingFutures.apply_programs_form_button }}
-						</v-btn>
-					</v-col>
-				</v-row>
+			<div class="px-4 px-lg-0">
+				<div class="mx-w-m my-16 pa-4 pa-lg-8 bg-primary rounded-xl " v-if="
+					seedingFutures.apply_programs_title &&
+					seedingFutures.apply_programs_text &&
+					seedingFutures.apply_programs_form_title &&
+					seedingFutures.apply_programs_form_name &&
+					seedingFutures.apply_programs_form_country &&
+					seedingFutures.apply_programs_form_email &&
+					seedingFutures.apply_programs_form_button
+				">
+					<h3 class="text-center fs-6 fs-7--lg fw-500">{{ seedingFutures.apply_programs_title }}</h3>
+					<p class="text-center fs-3 fs-4--md ma-auto" style="max-width: 800px;">{{
+						seedingFutures.apply_programs_text }}</p>
+					<p class="text-center fs-4 mt-8">{{ seedingFutures.apply_programs_form_title }}</p>
+					<v-row no-gutters>
+						<v-col cols="12" md="6" class="pa-2">
+							<v-text-field class="mb-0" variant="outlined" hide-details v-model="apply_name"
+								:placeholder="seedingFutures.apply_programs_form_name"></v-text-field>
+						</v-col>
+						<v-col cols="12" md="6" class="pa-2">
+							<v-text-field class="mb-0" variant="outlined" hide-details v-model="apply_country"
+								:placeholder="seedingFutures.apply_programs_form_country"></v-text-field>
+						</v-col>
+						<v-col cols="12" md="6" class="pa-2">
+							<v-text-field class="mb-0" variant="outlined" hide-details v-model="apply_email"
+								:placeholder="seedingFutures.apply_programs_form_email"></v-text-field>
+						</v-col>
+						<v-col cols="12" md="6" class="pa-2">
+							<v-btn block class="h-100--md" rounded="sm" color="white" @click="sendApply">
+								{{ seedingFutures.apply_programs_form_button }}
+							</v-btn>
+						</v-col>
+					</v-row>
+				</div>
 			</div>
 
-			<div class="banner banner-primary my-6" v-if="seedingFutures.second_title && seedingFutures.second_subtitle">
+			<div class="banner banner-primary my-6 px-5 px-lg-0"
+				v-if="seedingFutures.second_title && seedingFutures.second_subtitle">
 				<div class="mx-w-m w-100">
 					<h1>{{ seedingFutures.second_title }}</h1>
 					<p>{{ seedingFutures.second_subtitle }}</p>
 				</div>
 			</div>
 
-			<v-row class="mx-w-m my-16" v-if="
-				seedingFutures.donate_item_1_title &&
-				seedingFutures.donate_item_1_button &&
-				seedingFutures.donate_item_2_title &&
-				seedingFutures.donate_item_2_text &&
-				seedingFutures.donate_item_2_button &&
-				seedingFutures.donate_item_3_title &&
-				seedingFutures.donate_item_3_text
-			">
-				<v-col v-for="donate, i in donates" cols="6" md="4">
-					<div class="overflow-hidden mb-4" style="max-width: 170px;border-radius: 100%;margin: auto;">
-						<v-img :src="`/imgs/seeding-futures/donate-${i + 1}.jpg`" class="hover-1"></v-img>
-					</div>
-					<p class="fw-700 text-center mb-4 text-white text-shadow">{{ seedingFutures[donate.title] }}</p>
-					<p class="text-center fw-500 mb-4 text-white text-shadow">
-						{{ seedingFutures[donate.text] }}
-					</p>
-					<div class="d-flex justify-center ga-2">
-						<v-btn variant="flat" v-for="button in donate.buttons" :href="button.href" target="_blank">
+			<div class="px-5 px-lg-0">
+				<v-row class="mx-w-m my-16" v-if="
+					seedingFutures.donate_item_1_title &&
+					seedingFutures.donate_item_1_button &&
+					seedingFutures.donate_item_2_title &&
+					seedingFutures.donate_item_2_text &&
+					seedingFutures.donate_item_2_button &&
+					seedingFutures.donate_item_3_title &&
+					seedingFutures.donate_item_3_text
+				">
+					<v-col v-for="donate, i in donates" cols="12" md="4">
+						<div class="overflow-hidden mb-4" style="max-width: 170px;border-radius: 100%;margin: auto;">
+							<v-img :src="`/imgs/seeding-futures/donate-${i + 1}.jpg`" class="hover-1"></v-img>
+						</div>
+						<p class="fw-700 text-center mb-4 text-white text-shadow">{{ seedingFutures[donate.title] }}</p>
+						<p class="text-center fw-500 mb-4 text-white text-shadow">
+							{{ seedingFutures[donate.text] }}
+						</p>
+						<div class="d-flex justify-center ga-2">
+							<v-btn variant="flat" v-for="button in donate.buttons" :href="button.href" target="_blank">
 
-							<span v-if="button.text">
-								{{ seedingFutures[button.text] }}
-								<v-icon color="white" :icon="`mdi-${button.icon}`"></v-icon>
-							</span>
-							<v-icon v-else color="white" :icon="`mdi-${button.icon}`"></v-icon>
-						</v-btn>
-					</div>
-				</v-col>
-			</v-row>
+								<span v-if="button.text">
+									{{ seedingFutures[button.text] }}
+									<v-icon color="white" :icon="`mdi-${button.icon}`"></v-icon>
+								</span>
+								<v-icon v-else color="white" :icon="`mdi-${button.icon}`"></v-icon>
+							</v-btn>
+						</div>
+					</v-col>
+				</v-row>
+			</div>
 
-			<div class="banner banner-white"
+			<div class="banner banner-white px-5 px-lg-0"
 				v-if="seedingFutures.shop_title && seedingFutures.shop_subtitle && seedingFutures.shop_button">
 				<div class="mx-w-m w-100">
 					<h1>{{ seedingFutures.shop_title }}</h1>
 					<p>{{ seedingFutures.shop_subtitle }}</p>
 					<v-btn variant="flat" color="primary" class="mt-6" href="https://thx-dreams.myshopify.com/"
 						target="_blank">{{
-							seedingFutures.shop_button }}</v-btn>
+						seedingFutures.shop_button }}</v-btn>
 				</div>
 			</div>
 		</div>
@@ -138,7 +146,24 @@
 <script setup>
 import { storeToRefs } from 'pinia'
 const languagesStore = useLanguagesStore()
+const helpersStore = useHelpersStore()
 languagesStore.fetchLanguages()
+
+const apply_name = ref('')
+const apply_email = ref('')
+const apply_country = ref('')
+
+function sendApply() {
+	helpersStore.applyPrograms({
+		name:apply_name.value,
+		email:apply_email.value,
+		country:apply_country.value,
+	})
+	alert("Form sent correctly!")
+	apply_name.value = ""
+	apply_email.value = ""
+	apply_country.value = ""
+}
 
 const { seedingFutures } = storeToRefs(languagesStore);
 console.log("seedingFutures.value", seedingFutures);
@@ -171,6 +196,11 @@ const donates = ref([
 </script>
 
 <style lang="scss" scoped>
+@media (min-width: 600px) {
+	button.h-100--md{
+		height: 100% !important;
+	}
+}
 .banner {
 	padding: 24px 0;
 	display: flex;

@@ -131,6 +131,23 @@ export const useHelpersStore = defineStore('helpers', {
 				.catch((error) => console.log(error));
 			return true
 		},
+		async applyPrograms(body) {
+			let url = getApi('apply_programs')
+			await fetch(url, {
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				method: "POST",
+				body: JSON.stringify(body)
+			})
+				.then(response => response.json())
+				.then(response => {
+					console.log("response",response);
+				})
+				.catch((error) => console.log(error));
+			return true
+		},
 		getImagePath(src) {
 			return "https://thxdreams.com/img/"+src;
 		},
@@ -140,7 +157,7 @@ export const useHelpersStore = defineStore('helpers', {
 
 function getApi(table) {
 	if (process.env.NODE_ENV == "development") {
-		return "https://thxdreams.com/api/" + table + ".php"
+		return "https://thxdreams.com/api/" + table + ".php" + '?v=' + new Date().getTime()
 	}
 	return "/api/" + table + ".php"
 }
