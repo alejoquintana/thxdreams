@@ -23,6 +23,8 @@
     "@mdi/font": "^7.3.67",
     "@pinia/nuxt": "^0.5.1",
     "click-outside-vue3": "^4.0.1",
-    "sass": "^1.69.5"
+    "nuxt-sweetalert2": "^1.0.0",
+    "sass": "^1.69.5",
+    "sweetalert2": "^11.10.8"
   }
 }

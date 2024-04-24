@@ -13,23 +13,14 @@
 					{{ route.name }}
 				</NuxtLink>
 				<!-- {{ languagesStore.language }}
-				{{ language }}
-				<v-select variant="outlined" name="language" id="language" hide-details @update:menu="setLanguage()"
-					v-model="language" density="comfortable" :items="[
-					{
-						title: 'ES',
-						value: 'esp',
-					},
-					{
-						title: 'EN',
-						value: 'eng',
-					},
-				]">
+				{{ language }} -->
+				<!-- <v-select variant="outlined" name="language" id="language" hide-details @update:menu="setLanguage()"
+					v-model="language" density="comfortable" :items="[{title: 'ES',value: 'esp'},{title: 'EN',value: 'eng'}]">
 				</v-select> -->
 			</div>
 			<div class="d-flex align-center ga-3">
 
-				<v-icon icon="mdi-magnify" color="white" size="x-large"></v-icon>
+				<!-- <v-icon icon="mdi-magnify" color="white" size="x-large"></v-icon> -->
 				<v-icon v-if="mq('mdAndDown')" icon="mdi-menu" color="white" size="x-large"
 					@click="showSideMenu = true"></v-icon>
 			</div>
@@ -65,7 +56,7 @@ const language = ref(languagesStore.language)
 
 function setLanguage(e) {
 	languagesStore.setLanguage(language.value)
-	console.log("e", language.value);
+	// console.log("e", language.value);
 	routes.value = useHelpersStore().getNavRoutes
 }
 function logScroll() {

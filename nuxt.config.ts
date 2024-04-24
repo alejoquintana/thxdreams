@@ -31,6 +31,7 @@ export default defineNuxtConfig({
 				autoImports: ["defineStore", "acceptHMRUpdate"],
 			},
 		],
+		// 'nuxt-sweetalert2'
 	],
 	alias: {
 		pinia: "/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs"

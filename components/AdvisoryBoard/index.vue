@@ -9,23 +9,23 @@
 		</div>
 		<div class="advisors-container px-5 px-lg-0">
 			<v-row v-if="advisors && advisors.length">
-				<v-col cols="12" md="3" v-for="advisor, i in advisors" :key="i">
-					<div class="bg-white pa-4 rounded-xl text-primary box-shadow">
-						<div class="text-primary border-primary-bottom">
-							<span class="fs-5">
-								{{ advisor.name }}
-							</span>
-						</div>
-						<div>
+				<v-col cols="12" lg="3" md="4" sm="6" v-for="advisor, i in advisors" :key="i">
+					<div
+						class="bg-white pa-4 rounded-xl text-primary box-shadow h-100 d-flex flex-column justify-space-between">
+						<div class="">
+							<div class="text-primary border-primary-bottom">
+								<span class="fs-5">
+									{{ advisor.name }}
+								</span>
+							</div>
 							<div class="text-primary fs-3 fw-bold py-3">
 								{{ advisor.position }}
 							</div>
-							<div v-html="advisor.text" class="text-primary">
-							</div>
+							<div v-html="advisor.text" class="text-primary"></div>
 						</div>
 						<div class="d-flex justify-end">
 							<v-img :src="useHelpersStore().getImagePath('directorio/' + advisor.id + '.jpg')"
-								class="h-100 rounded-xl" style="max-width: 163px" cover></v-img>
+								class="h-100 rounded-circle border-primary border-lg border-opacity-100" style="max-width: 163px" cover></v-img>
 						</div>
 					</div>
 				</v-col>

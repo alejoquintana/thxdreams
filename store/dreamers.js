@@ -36,7 +36,7 @@ export const useDreamersStore = defineStore('dreamers', {
 			console.log("filters", filters);
 			let url = getApi('dreamers_short') + '?v=' + new Date().getTime()
 			if (filters) {
-				url = url + `&accomplished=${filters.accomplished}&country=${filters.country}&year=${filters.year}&sort=${filters.sort}`
+				url = url + `&accomplished=${filters.accomplished}&country=${filters.country}&year=${filters.year}&grower=${filters.grower}`
 			}
 			await fetch(url)
 				.then(response => {
@@ -46,7 +46,7 @@ export const useDreamersStore = defineStore('dreamers', {
 				})
 				.then(response => {
 					console.log("response",response);
-					this.dreamers = response
+					this.dreamers = response.dreamers
 				})
 				.catch((error) => console.log(error));
 			return true
@@ -88,7 +88,7 @@ fetch('/api/users', {
 function getApi(table) {
 	// if (process.env.NODE_ENV == "development") {
 		https://thxdreams.com/api/dreamers.php
-		return "https://thxdreams.com/api/" + table + ".php"
+		// return "https://thxdreams.com/api/" + table + ".php"
 		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php"
 	// }
 	return "/api/" + table + ".php"

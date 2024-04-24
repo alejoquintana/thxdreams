@@ -1,11 +1,24 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+
 // require_once($_SERVER['DOCUMENT_ROOT'].'/../private_html/db.php');
-$server = "localhost:3306";
+$server = "localhost";
 $db = "thxweb";
-$user = "root";
-$pass = "root";
+// $user = "cuatrolados";
+// $pass = "4Lados2023!";
+
+$user = "thxmysql";
+$pass = "203hy.wFCL";
+
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 $connect = new mysqli($server, $user, $pass, $db);
+// if ($connect->connect_error) {
+//     die("La conexión ha fallado, error número " . $connect->connect_errno . ": " . $connect->connect_error);
+// }
+// echo '<br>';print_r($connect);echo '<br>';
 $connect->set_charset("utf8");
 
 function db_query($i, $param){
@@ -125,6 +138,12 @@ function db_implode($sql, $field){
 	foreach ($result_rows as $value) $toImplode[] = $value->$field;
 	return implode(',', $toImplode);
 }
+function db_getAll_asArray($sql, $field){
+	$toImplode = [];
+	$result_rows = db_getAll($sql);
+	foreach ($result_rows as $value) $toImplode[] = $value->$field;
+	return $toImplode;
+}
 
 function db_getOne($sql, $inArray = false){
 	global $connect;
@@ -146,3 +165,4 @@ function db_for_query($sql, $inArray = false){
 	if (!$res) handle_error($connect->error, $sql);
 	return $res;
 }
+?>

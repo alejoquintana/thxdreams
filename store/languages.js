@@ -16,7 +16,8 @@ export const useLanguagesStore = defineStore('languages', {
 		fetchLanguages(changed = false) {
 			if (changed || !this.fetched) {
 
-				fetch(`https://thxdreams.com/api/languages/texts-${this.language}.json`)
+				fetch(`api/languages/texts-${this.language}.json`)
+				// fetch(`https://thxdreams.com/api/languages/texts-${this.language}.json`)
 					.then(response => response.json())
 					.then(response => {
 						this.ourDreams = response.ourDreams

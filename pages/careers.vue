@@ -16,7 +16,9 @@
 			</p>
 			<br>
 
-			<p>
+			<p style="
+    word-break: break-word;
+">
 				We want you on our team! Visit our LinkedIn page to stay updated on future job openings:
 				<a href="https://www.linkedin.com/company/thxdreams/" target="_blank" class="classic-a"
 					rel="noopener noreferrer">https://www.linkedin.com/company/thxdreams/</a>

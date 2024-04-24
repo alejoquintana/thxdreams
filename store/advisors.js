@@ -11,7 +11,7 @@ export const useAdvisorsStore = defineStore("advisors", {
 			await fetch(getApi('advisors') + '')
 				.then(response => response.json())
 				.then(response => {
-					console.log("response",response);
+					// console.log("response",response);
 					this.advisors = response
 				})
 				.catch((error) => console.log(error));
@@ -23,7 +23,7 @@ export const useAdvisorsStore = defineStore("advisors", {
 function getApi(table) {
 	// if (process.env.NODE_ENV == "development") {
 		https: //thxdreams.com/api/dreamers.php
-			return "https://thxdreams.com/api/" + table + ".php" + '?v=' + new Date().getTime()
+			// return "https://thxdreams.com/api/" + table + ".php" + '?v=' + new Date().getTime()
 		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php"
 	// }
 	return "/api/" + table + ".php"

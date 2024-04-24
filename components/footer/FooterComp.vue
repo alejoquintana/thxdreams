@@ -10,14 +10,16 @@
 					</NuxtLink>
 				</div>
 				<div class="d-flex-center mb-16">
-					<button class="bg-white text-primary fs-lg--sm-down  fw-500 px-5 btn-block rounded-pill btn-sm mt-6">
-						<span v-if="useLanguagesStore().language == 'eng'" class="text-primary">
-							Subscribe to our newsletter
-						</span>
-						<span v-else class="text-primary">
-							Subscribite a nuestro boletín informativo
-						</span>
-					</button>
+					<NuxtLink to="/contact-us">
+						<button class="bg-white text-primary fs-lg--sm-down  fw-500 px-5 btn-block rounded-pill btn-sm mt-6">
+							<span v-if="useLanguagesStore().language == 'eng'" class="text-primary">
+								Subscribe to our newsletter
+							</span>
+							<span v-else class="text-primary">
+								Subscribite a nuestro boletín informativo
+							</span>
+						</button>
+					</NuxtLink>
 				</div>
 			</v-col>
 			<v-col cols="12" lg="8">

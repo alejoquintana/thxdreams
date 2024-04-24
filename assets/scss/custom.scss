@@ -15,6 +15,7 @@ body {
 body.modal-open {
 	position: fixed;
 	overflow: hidden;
+	width: 100vw;
 }
 
 .img-shadow {
@@ -324,3 +325,4 @@ p.text-primary-dark{
 	background-color: #fff;
 	color: $primary;
 }
+

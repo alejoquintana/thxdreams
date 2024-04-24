@@ -134,7 +134,7 @@ function filterDreamers(type) {
 }
 
 function goToDreamer(path) {
-	console.log("path",path);
+	// // console.log("path",path);
 }
 </script>
 

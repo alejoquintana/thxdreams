@@ -9,7 +9,7 @@
 			</div>
 			<div class="px-4 px-lg-0">
 				<p v-if="seedingFutures.info_title"
-					class="bg-white rounded-pill px-8 py-1 fs-7--lg fw-600 text-center mx-w-m my-16 text-primary-dark">{{
+					class="bg-white rounded-pill px-8 py-1 fs-7--lg-up fw-600 text-center mx-w-m my-16 text-primary-dark">{{
 					seedingFutures.info_title }}</p>
 			</div>
 
@@ -17,7 +17,7 @@
 				v-if="seedingFutures.info_article_title && seedingFutures.info_article_text">
 				<v-col cols="12" md="5">
 					<div class="overflow-hidden box-shadow">
-						<v-img :src="`/imgs/seeding-futures/Why.jpeg`" class="hover-1"></v-img>
+						<v-img :src="`/img/seeding-futures/Why.jpeg`" class="hover-1"></v-img>
 					</div>
 				</v-col>
 				<v-col cols="12" md="7">
@@ -39,7 +39,7 @@
 			" class="my-16 text-white" style="max-width: 1500px;margin: auto;">
 				<v-col v-for="item in ['A', 'B', 'C', 'D']" cols="6" md="3">
 					<div class="overflow-hidden mb-4" style="max-width: 170px;border-radius: 100%;margin: auto;">
-						<v-img :src="`/imgs/seeding-futures/${item}.jpg`" class="hover-1"></v-img>
+						<v-img :src="`/img/seeding-futures/${item}.jpg`" class="hover-1"></v-img>
 					</div>
 					<div class="d-flex justify-center">
 						<p class="text-center fs-3 fs-4--md fw-bold bg-primary mb-4 px-4 px-lg-8 py-1 rounded-pill">{{
@@ -73,7 +73,7 @@
 								:placeholder="seedingFutures.apply_programs_form_name"></v-text-field>
 						</v-col>
 						<v-col cols="12" md="6" class="pa-2">
-							<v-text-field class="mb-0" variant="outlined" hide-details v-model="apply_country"
+							<v-text-field class="mb-0" variant="outlined" hide-details v-model="apply_message"
 								:placeholder="seedingFutures.apply_programs_form_country"></v-text-field>
 						</v-col>
 						<v-col cols="12" md="6" class="pa-2">
@@ -109,7 +109,7 @@
 				">
 					<v-col v-for="donate, i in donates" cols="12" md="4">
 						<div class="overflow-hidden mb-4" style="max-width: 170px;border-radius: 100%;margin: auto;">
-							<v-img :src="`/imgs/seeding-futures/donate-${i + 1}.jpg`" class="hover-1"></v-img>
+							<v-img :src="`/img/seeding-futures/donate-${i + 1}.jpg`" class="hover-1"></v-img>
 						</div>
 						<p class="fw-700 text-center mb-4 text-white text-shadow">{{ seedingFutures[donate.title] }}</p>
 						<p class="text-center fw-500 mb-4 text-white text-shadow">
@@ -148,10 +148,12 @@ import { storeToRefs } from 'pinia'
 const languagesStore = useLanguagesStore()
 const helpersStore = useHelpersStore()
 languagesStore.fetchLanguages()
+const { $swal } = useNuxtApp()
+
 
 const apply_name = ref('')
 const apply_email = ref('')
-const apply_country = ref('')
+const apply_message = ref('')
 
 const validateEmail = (email) => {
 	return email.match(
@@ -159,23 +161,28 @@ const validateEmail = (email) => {
 	);
 };
 function sendApply() {
-	if (!apply_name.value || !validateEmail(apply_email.value) | !apply_country.value) {
+	if (!apply_name.value || !validateEmail(apply_email.value) | !apply_message.value) {
 		return
 	}
 
 	helpersStore.applyPrograms({
 		name:apply_name.value,
 		email:apply_email.value,
-		country:apply_country.value,
+		message:apply_message.value,
+		form:"apply_programs",
 	})
-	alert("Form sent correctly!")
+	$swal.fire({
+		title: 'Form sent correctly!',
+		icon: 'success',
+		confirmButtonText: 'Ok'
+	})
 	apply_name.value = ""
 	apply_email.value = ""
-	apply_country.value = ""
+	apply_message.value = ""
 }
 
 const { seedingFutures } = storeToRefs(languagesStore);
-console.log("seedingFutures.value", seedingFutures);
+// console.log("seedingFutures.value", seedingFutures);
 const donates = ref([
 	{
 		title: "donate_item_1_title",
@@ -196,7 +203,7 @@ const donates = ref([
 		buttons: [
 			{ icon: "facebook", href: "https://www.facebook.com/thxdreams/" },
 			{ icon: "twitter", href: "https://twitter.com/thx_dreams" },
-			{ icon: "email", href: "mailto:info @thxdreams.com" },
+			{ icon: "email", href: "mailto:info@thxdreams.com" },
 			// {icon:"whatsapp",href:""},
 			{ icon: "message", href: "tel:+1(754)2005755" },
 		],
@@ -235,7 +242,7 @@ const donates = ref([
 $linear: linear-gradient(0deg, rgba(black, 0) 85%, rgba($primary, 0.8) 100%);
 
 .bg-gradient {
-	background-image: url('/imgs/fondo-web-thx.jpg');
+	background-image: url('/img/fondo-web-thx.jpg');
 	background-color: $darker;
 }
 

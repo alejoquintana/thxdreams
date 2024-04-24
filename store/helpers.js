@@ -5,6 +5,7 @@ export const useHelpersStore = defineStore('helpers', {
 	state: () => ({
 		years: [],
 		countries: [],
+		growers: [],
 		contacts: [
 			{
 				text: 'CALL US',
@@ -115,17 +116,21 @@ export const useHelpersStore = defineStore('helpers', {
 	},
 	actions: {
 		async fetchFilters(column, language = null) {
-			let url = getApi('filters') + '?filter=' + column
+			let url = getApi('filters') + '&filter=' + column
 			if (useLanguagesStore().language == "eng") url = url + '&language=eng'
 			if (useLanguagesStore().language == "esp") url = url + '&language=esp'
 			await fetch(url)
 				.then(response => response.json())
 				.then(response => {
+					console.log(column, response);
 					if (column == "years") {
 						this.years = response
 					}
 					if (column == "countries") {
 						this.countries = response
+					}
+					if (column == "growers") {
+						this.growers = response
 					}
 				})
 				.catch((error) => console.log(error));
@@ -149,6 +154,7 @@ export const useHelpersStore = defineStore('helpers', {
 			return true
 		},
 		getImagePath(src) {
+			return "https://phpstack-628703-4271081.cloudwaysapps.com/imgs/" + src;
 			return "https://thxdreams.com/img/"+src;
 		},
 
@@ -157,6 +163,7 @@ export const useHelpersStore = defineStore('helpers', {
 
 function getApi(table) {
 	// if (process.env.NODE_ENV == "development") {
+		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php" + '?v=' + new Date().getTime()
 		return "https://thxdreams.com/api/" + table + ".php" + '?v=' + new Date().getTime()
 	// }
 	return "/api/" + table + ".php"

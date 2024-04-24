@@ -1,5 +1,47 @@
 <template>
 	<ParallaxBackground gradient>
+		<Transition name="fade">
+			<modal v-if="showModal" @closeModal="closeModal()">
+
+				<v-row v-if="dreamersStore.dreamer && dreamersStore.dreamer.id" style="max-width: 800px;" class="mt-4">
+					<v-col cols="12">
+						<v-responsive :aspect-ratio="16 / 9" class="ma-auto">
+							<iframe :src="dreamersStore.dreamer.video" class="w-100 h-100 rounded-xl" webkitallowfullscreen
+								mozallowfullscreen allowfullscreen frameBorder="0"></iframe>
+						</v-responsive>
+					</v-col>
+					<v-col cols="12" class=" px-8">
+						<div class="text-white d-flex justify-space-between align-end">
+							<h1 class="">
+								{{ dreamersStore.dreamer.name }}
+							</h1>
+							<span class="fw-00">
+								{{ dreamersStore.dreamer.country }}, {{ dreamersStore.dreamer.year }}
+							</span>
+						</div>
+						<div class="text-white pt-4 fs-3--lgAndUp" v-html="dreamersStore.dreamer.text"></div>
+					</v-col>
+					<v-col cols="12" class="my-8 d-flex justify-center">
+						<v-row>
+							<v-col cols="12" lg="4" v-for="img, i in dreamersStore.dreamer.images.slice(0, 3)" :key="i"
+								style="max-height: 330px;">
+								<v-img :src="useHelpersStore().getImagePath('sonadores_fotos/' + img.id + '.jpg')"
+									class="h-100 rounded-xl" cover></v-img>
+							</v-col>
+						</v-row>
+					</v-col>
+					<v-col cols="12" class="d-flex justify-center">
+						<a variant="outlined" href="https://www.instagram.com/thx_dreams/" size="sm"
+							class="btn btn-outlined-white text-white">
+							<p>
+								<v-icon class="pe-2" icon="mdi-instagram" color="white"></v-icon>
+								Visit as @thx_Dreams
+							</p>
+						</a>
+					</v-col>
+				</v-row>
+			</modal>
+		</Transition>
 		<div class="banner banner-primary my-6">
 			<div class="w-100 mx-w-m fs-3">
 				<v-row align="center" no-gutters>
@@ -30,8 +72,9 @@
 											variant="outlined" :items="year.items" hide-details density="compact"></v-select>
 									</v-col>
 									<v-col cols="6" md="3" class="px-1 mb-4">
-										<v-select v-model="sort.selected" name="sort" id="sort" :label="sort.label"
-											variant="outlined" :items="sort.items" hide-details density="compact"></v-select>
+										<v-select v-model="grower.selected" name="grower" id="grower" :label="grower.label"
+											variant="outlined" :items="grower.items" hide-details density="compact"
+											item-title="name" item-value="id"></v-select>
 									</v-col>
 								</v-row>
 							</v-col>
@@ -84,53 +127,9 @@
 					No results founded
 				</p>
 			</div>
-			<Transition name="fade">
-				<modal v-if="showModal" @closeModal="closeModal()">
-					<!-- <p class="text-white">
-							{{ dreamersStore.dreamer }}
-						</p> -->
-					<v-row v-if="dreamersStore.dreamer && dreamersStore.dreamer.id" style="max-width: 800px;" class="mt-4">
-						<v-col cols="12">
-							<v-responsive :aspect-ratio="16 / 9" class="ma-auto">
-								<iframe :src="dreamersStore.dreamer.video" class="w-100 h-100 rounded-xl" webkitallowfullscreen
-									mozallowfullscreen allowfullscreen frameBorder="0"></iframe>
-							</v-responsive>
-						</v-col>
-						<v-col cols="12" class=" px-8">
-							<div class="text-white d-flex justify-space-between align-end">
-								<h1 class="">
-									{{ dreamersStore.dreamer.name }}
-								</h1>
-								<span class="fw-00">
-									{{ dreamersStore.dreamer.country }}, {{ dreamersStore.dreamer.year }}
-								</span>
-							</div>
-							<div class="text-white pt-4 fs-3--lgAndUp" v-html="dreamersStore.dreamer.text"></div>
-						</v-col>
-						<v-col cols="12" class="my-8 d-flex justify-center">
-							<!-- {{ dreamersStore.dreamer }} -->
-							<v-row>
-								<v-col cols="12" lg="4" v-for="img, i in dreamersStore.dreamer.images.slice(0, 3)" :key="i"
-									style="max-height: 330px;">
-									<v-img :src="useHelpersStore().getImagePath('sonadores_fotos/' + img.id + '.jpg')"
-										class="h-100 rounded-xl" cover></v-img>
-								</v-col>
-							</v-row>
-						</v-col>
-						<v-col cols="12" class="d-flex justify-center">
-							<a variant="outlined" href="https://www.instagram.com/thx_dreams/" size="sm"
-								class="btn btn-outlined-white text-white">
-								<p>
-									<v-icon class="pe-2" icon="mdi-instagram" color="white"></v-icon>
-									Visit as @thx_Dreams
-								</p>
-							</a>
-						</v-col>
-					</v-row>
-				</modal>
-			</Transition>
 		</div>
 	</ParallaxBackground>
+
 </template>
 
 <script setup>
@@ -140,6 +139,7 @@ dreamersStore.fetchDreamersShort()
 
 useHelpersStore().fetchFilters('countries')
 useHelpersStore().fetchFilters('years')
+useHelpersStore().fetchFilters('growers')
 function consoleLog(param) {
 	console.log("param", param);
 }
@@ -158,7 +158,7 @@ function closeModal() {
 }
 
 import { storeToRefs } from 'pinia'
-const { years, countries } = storeToRefs(useHelpersStore());
+const { years, countries, growers } = storeToRefs(useHelpersStore());
 const lang = useLanguagesStore().language
 const accomplished_eng = ref({
 	items: [{
@@ -184,31 +184,24 @@ const year_eng = ref({
 	selected: lang == 'eng' ? "ALL" : 'TODOS',
 	label: lang == 'eng' ? "YEARS" : 'AÑOS',
 })
-const sort_eng = ref({
-	items: [{
-		title: lang == 'eng' ? 'NAME' : 'NOMBRE',
-		value: 'NAME'
-	}, {
-		title: lang == 'eng' ? 'LAST DREAM' : 'ULTIMO SUEÑO',
-		value: 'LAST_DREAM'
-	}, {
-		title: lang == 'eng' ? 'YEAR' : 'AÑO',
-		value: 'YEAR'
-	}],
-	selected: "NAME",
-	label: lang == 'eng' ? "SORT" : 'ORDENAR',
+const grower_eng = ref({
+	items: growers,
+	selected: lang == 'eng' ? "ALL" : 'TODOS',
+	label: lang == 'eng' ? "GROWERS" : 'GROWERS',
 })
+
 const accomplished = reactive(accomplished_eng)
 const country = reactive(country_eng)
 const year = reactive(year_eng)
-const sort = reactive(sort_eng)
+const grower = reactive(grower_eng)
 
 function goFetchDreamersShort() {
+	console.log("grower.value.selected",grower.value.selected);
 	dreamersStore.fetchDreamersShort({
 		accomplished: accomplished.value.selected,
 		country: country.value.selected,
 		year: year.value.selected,
-		sort: sort.value.selected,
+		grower: grower.value.selected,
 	})
 }
 </script>

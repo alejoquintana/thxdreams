@@ -65,7 +65,7 @@ const forceRerender = () => {
 //const carousel = ref(null);
 onMounted(() => {
 	forceRerender("moun");
-	console.log("slider.value",slider.value);
+	// console.log("slider.value",slider.value);
 	if (!slider.value || !slider.value) return
 	var autoScrolling = setInterval(() => {
 		if (!slider.value || !slider.value) return
