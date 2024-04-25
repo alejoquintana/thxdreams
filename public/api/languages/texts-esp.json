@@ -1,4 +1,32 @@
 {
+	"routes": [
+		{
+				"name": "Nuestros sueños",
+				"path": "nuestros-suenos"
+		},
+		{
+				"name": "Consejo asesor",
+				"path": "consejo-asesor"
+		},
+		{
+				"name": "Sembrando futuros",
+				"path": "sembrando-futuros"
+		},
+		{
+				"name": "Nuestro compromiso",
+				"path": "nuestro-compromiso",
+				"nav": false
+		},
+		{
+				"name": "Empleos",
+				"path": "empleos",
+				"nav": false
+		},
+		{
+				"name": "Contacto",
+				"path": "contacto"
+		}
+	],
 	"ourDreams": {
 		"title": "Learn here about our current Dreams and those that our co-branding partners and shoppers like you, already helped come true",
 		"filters_form_title": "OUR DREAM",
@@ -8,49 +36,49 @@
 		"filters_form_sort": "SORT BY"
 	},
 	"advisoryBoard": {
-		"first_title": "ADVISORY BOARD",
-		"first_subtitle": "We created an advisory board that oversees the selection process of farm workers to ensure transparency, to recommend best practices for governance, to review, critique and approve our Annual Report and to ensure Thx! remains true to its purpose. We are also partnering with Certification Agencies to certify our dream completion."
+		"first_title": "Consejo Asesor",
+		"first_subtitle": "Creamos un consejo asesor que supervisa el proceso de selección de trabajadores rurales para garantizar la transparencia, recomendar las mejores prácticas de gobierno, revisar, criticar y aprobar nuestro Informe Anual y asegurar que Thx! se mantenga fiel a su propósito. También nos estamos asociando con Agencias de Certificación para verificar la realización de los sueños."
 	},
 	"seedingFutures": {
 		"first_title": "SEMBRANDO FUTUROS",
-		"first_subtitle": "Our Mission is to support farmworkers and their families further their education.",
-		"info_title": "We believe education is the gateway to a free, healthy, fair and prosperous society",
-		"info_article_title": "POR QUÉ",
-		"info_article_text": "One of the greatest barriers for farmworkers and farmworker families to be able to move up socially is the disadvantage they have in accessing high quality educational support Lack of access to education for farmworker adults and barriers to accessing education for farmworker children leaves families with little hope for improving their livelihoods and progressing in the jobs. There is a need to provide accessible farmworker friendly education support, thus Seeding Futures.",
-		"A_title": "LESSON PLAN",
-		"B_title": "EQUIPMENT PLAN",
-		"C_title": "ADULT CERTIFICATE ACHIEVEMENT PLAN",
-		"D_title": "HIGHER EDUCATION",
+		"first_subtitle": "Nuestra misión es apoyar a los trabajadores rurales y sus familias para que continúen su educación.",
+		"info_title": "Creemos que la educación es la puerta hacia una sociedad libre, sana, justa y próspera.",
+		"info_article_title": "¿POR QUÉ?",
+		"info_article_text": "Una de las mayores barreras que presentan los trabajadores rurales y sus familias para mejorar su calidad de vida, es la falta de acceso y apoyo a una educación de alta calidad. El no poder acceder a una buena educación, tanto para trabajadores rurales y sus hijos, dejan a las familias con pocas esperanzas de mejoras en su vida diaria y progreso en sus trabajos. Sembrando Futuros nace de la necesidad de brindar apoyo educativo accesible y amigable para todos ellos.",
+		"A_title": "PLAN DE ESTUDIO",
+		"B_title": "PLAN DE EQUIPAMIENTO",
+		"C_title": "PLAN DE CERTIFICADOS PARA ADULTOS",
+		"D_title": "EDUCACIÓN SUPERIOR",
 		"ABCD_items_text": "DONÁ",
-		"A_items": "1) Online School support lessons for farmworkers children<br>2) English language 2 Tiers (Individual and group)<br>3) English Technical Terms (Specific to agricultural technical terms)",
-		"B_items": "1) Provide Laptops, Chromebooks, Tablets and internet access<br>2) Provide books, literature and other materials as necessary",
-		"C_items": "1) Support help to attain a certification level (Elementary, etc.)<br>2) Support lessons<br>3) Scholarships and sponsorships",
-		"D_items": "1) Scholarships to help attain degrees or certifications<br>2) Support lessons<br>3) Follow up",
-		"apply_programs_title": "WHO IS ELIGIBLE?",
-		"apply_programs_text": "THX! Seeding Futures is an open platform where all growers can offer educational solutions to their farmworkers and where consumers, growers, companies and people working in agriculture can give back and do good for the people who play a key role in our industry.",
-		"apply_programs_form_title": "APPLY TO OUR PROGRAMS",
-		"apply_programs_form_name": "TÚ NOMBRE",
+		"A_items": "1) Apoyo escolar en línea para hijos de trabajadores rurales.<br>2) Inglés en dos niveles (individual y grupal).<br>3) Ingles Técnico: Términos técnicos específicos del sector agrícola.",
+		"B_items": "1) Proveer Tecnología: Proporcionar computadoras portátiles, Chromebooks, tablets y acceso a internet.<br>2) Material Didáctico: Proporcionar libros, literatura y otros materiales según sea necesario.",
+		"C_items": "1) Asistencia para alcanzar un nivel de certificación (Elemental, etc.).<br>2) Clases de Apoyo<br>3) Becas y Patrocinios",
+		"D_items": "1) Becas Universitarias para obtener títulos o certificaciones,<br>2) Clases de Apoyo,<br>3) Seguimiento",
+		"apply_programs_title": "¿QUIÉN PUEDE PARTICIPAR?",
+		"apply_programs_text": "¡THX! Sembrando Futuros es una plataforma abierta donde todos los productores rurales pueden ofrecer soluciones educativas a sus trabajadores. Además, consumidores, productores, empresas y personas que trabajan en el sector agrícola pueden contribuir y ayudar a quienes juegan un papel clave en nuestra industria.",
+		"apply_programs_form_title": "INSCRÍBETE EN NUESTROS PROGRAMAS",
+		"apply_programs_form_name": "NOMBRE",
 		"apply_programs_form_country": "PAÍS",
 		"apply_programs_form_email": "EMAIL",
 		"apply_programs_form_button": "ENVIAR MENSAJE",
-		"second_title": "BECOME A CHANGEMAKER",
-		"second_subtitle": "There are many ways you can support farmworkers",
-		"donate_item_1_title": "MAKING A DIRECT DONATION",
-		"donate_item_1_button": "DONATE",
-		"donate_item_2_title": "BECOMING AN AMBASSADOR / TEAM MEMBER",
-		"donate_item_2_text": "and helping us raise money with your contacts",
+		"second_title": "¡SE PARTE DEL CAMBIO!",
+		"second_subtitle": "Existen muchas maneras de apoyar a los trabajadores rurales",
+		"donate_item_1_title": "Haz una donación directa",
+		"donate_item_1_button": "DONÁ",
+		"donate_item_2_title": "¡CONVIÉRTETE EN EMBAJADOR/A O MIEMBRO DEL EQUIPO!",
+		"donate_item_2_text": " Ayuda a recaudar fondos para Sembrando Futuros y sé parte de una comunidad apasionada por empoderar a los trabajadores rurales a través de la educación.",
 		"donate_item_2_button": "CONTACTANOS ",
-		"donate_item_3_title": "SPREADING OUR PROGRAM",
-		"donate_item_3_text": "with your friends and colleagues, by sharing in social media",
-		"shop_title": "DO GOOD AND LOOK GOOD",
-		"shop_subtitle": "With the purchase of our t-shirts, you are helping a farmworker get closer to fulfill his dream.",
-		"shop_button": "Shop & Help"
+		"donate_item_3_title": "¡DIFUNDE NUESTRO PROGRAMA!",
+		"donate_item_3_text": "Comparte la iniciativa Sembrando Futuros con tus amigos, colegas y en las redes sociales. ¡Juntos podemos empoderar a los trabajadores rurales a través de la educación!",
+		"shop_title": "HAZ EL BIEN Y LUCE BIEN",
+		"shop_subtitle": "Con la compra de nuestras camisetas, ayudas a un trabajador rural a cumplir su sueño.",
+		"shop_button": "Compra y ayuda"
 	},
 	"ContactUs": {
-		"form_title": "CONTACT US",
-		"form_name": "YOUR NAME",
-		"form_message": "COUNTRY",
-		"form_email": "EMAIL ADDRESS",
-		"form_button": "SEND MESSAGE"
+		"form_title": "CONTÁCTANOS",
+		"form_name": "NOMBRE",
+		"form_message": "MENSAJE",
+		"form_email": "EMAIL",
+		"form_button": "ENVIAR MENSAJE"
 	}
 }

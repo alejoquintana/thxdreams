@@ -12,7 +12,7 @@
 						<div class="w-100 h-100 absolute z-99 d-flex-between-center text-white">
 							<p class="fs-5 w-100 text-center lh-5 fs-7--lg-up py-2 py-lg-4 px-4 px-lg-8 rounded-b-xl align-self-end"
 								:style="`background-color: rgba(0,0,0,0.5);min-width: ${mq('lgAndUp') ? '50%' : '200px'};`">
-								Meet
+								{{ language == 'eng' ? 'Meet' : 'Conoce a' }}
 								<!-- <br /> -->
 								<span class="text-capitalize nofirst-upper">{{ dreamer.name }}!</span>
 							</p>
@@ -42,6 +42,10 @@
 </template>
 
 <script setup>
+const languagesStore = useLanguagesStore()
+languagesStore.fetchLanguages()
+const { language } = storeToRefs(languagesStore);
+
 const showPlay = ref(false)
 const emit = defineEmits(['goToDreamer'])
 const props = defineProps(['dreamer'])

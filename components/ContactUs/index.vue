@@ -7,21 +7,21 @@
 					<v-container>
 						<v-row>
 							<v-col cols="12" class="contact__contentTitle">
-								<h1>Get In Touch</h1>
+								<h1>{{contactUs.form_title}}</h1>
 							</v-col>
 
 							<v-col cols="12" md="6">
-								<v-text-field :rules="nameRules" label="YOUR NAME" name="name" variant="solo-filled"
+								<v-text-field :rules="nameRules" :label="contactUs.form_name" name="name" variant="solo-filled"
 									id="inputName"></v-text-field>
 							</v-col>
 
 							<v-col cols="12" md="6">
-								<v-text-field :rules="emailRules" label="EMAIL ADDRESS" name="email" variant="solo-filled"
-									id="inputEmail"></v-text-field>
+								<v-text-field :rules="emailRules" :label="contactUs.form_email" name="email"
+									variant="solo-filled" id="inputEmail"></v-text-field>
 							</v-col>
 
 							<v-col cols="12" md="12">
-								<v-textarea name="message" id="inputMessage" rows="4" label="YOUR MESSAGE"
+								<v-textarea name="message" id="inputMessage" rows="4" :label="contactUs.form_message"
 									variant="solo-filled"></v-textarea>
 							</v-col>
 
@@ -36,7 +36,7 @@
 
 							<v-col cols="12" md="12" class="mt-0">
 								<button class="bg-white text-primary fs-lg--sm-down fw-500" type="button"
-									id="contact__btnSubmit" @click="submitForm">SEND MESSAGE</button>
+									id="contact__btnSubmit" @click="submitForm">{{contactUs.form_button}}</button>
 							</v-col>
 
 						</v-row>
@@ -54,14 +54,13 @@
 <!-- ------------------- -->
 <script setup>
 import { storeToRefs } from 'pinia'
-const helpersStore = useHelpersStore()
 const languagesStore = useLanguagesStore()
-languagesStore.fetchLanguages()
+const helpersStore = useHelpersStore()
 const { $swal } = useNuxtApp()
 
-const { ContactUs } = storeToRefs(languagesStore);
-// console.log(ContactUs);
+languagesStore.fetchLanguages()
 
+const { contactUs } = storeToRefs(languagesStore);
 
 function submitForm() {
 	console.log("submit!!")
@@ -125,65 +124,5 @@ h1 {
 
 .text-primary {
 	color: rgb(var(--v-theme-primary)) !important;
-}
-
-
-
-/* Ya estaban cargados */
-.banner {
-	padding: 24px 0;
-	display: flex;
-	justify-content: center;
-}
-
-.banner-primary {
-	background-color: $primary;
-	color: #fff;
-}
-
-.banner-white {
-	background-color: #fff;
-	color: $primary;
-}
-
-.gradient {
-	width: 100%;
-	height: 100px;
-	background-image: linear-gradient(180deg, #00000000, rgba($primary, 1));
-}
-
-$linear: linear-gradient(0deg, rgba(black, 0) 85%, rgba($primary, 0.8) 100%);
-
-.bg-gradient {
-	background-image: url('/imgs/fondo-web-thx.jpg');
-	background-color: $darker;
-}
-
-.img-size {
-	max-width: 250px
-}
-
-@media (min-width: 900px) {
-	.img-size {
-		max-width: 400px
-	}
-}
-
-
-.parallax {
-	// min-height: 500px;
-	background-attachment: fixed;
-	background-position: top;
-	// background-repeat: no-repeat;
-	//background-color: rgba($color: #FFF, $alpha: 1.0) !important;
-	background-size: cover;
-	-webkit-background-size: cover;
-	/* safari may need this */
-}
-
-@media (max-width: 960px) {
-	.parallax {
-		background-position: center;
-	}
 }
 </style>

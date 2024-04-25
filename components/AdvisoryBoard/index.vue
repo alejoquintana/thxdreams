@@ -24,8 +24,15 @@
 							<div v-html="advisor.text" class="text-primary"></div>
 						</div>
 						<div class="d-flex justify-end">
-							<v-img :src="useHelpersStore().getImagePath('directorio/' + advisor.id + '.jpg')"
-								class="h-100 rounded-circle border-primary border-lg border-opacity-100" style="max-width: 163px" cover></v-img>
+							<v-img :src="'/img/directorio/' + advisor.id + '.jpg'"
+								class="h-100 rounded-circle border-primary border-lg border-opacity-100"
+								style="max-width: 163px" cover></v-img>
+							<!-- <v-img :src="'https://thxdreams.com/img/directorio/' + 9 + '.jpg'"
+								class="h-100 rounded-circle border-primary border-lg border-opacity-100"
+								style="max-width: 163px" cover></v-img>
+							<v-img :src="'https://thxdreams.com/img/directorio/' + 10 + '.jpg'"
+								class="h-100 rounded-circle border-primary border-lg border-opacity-100"
+								style="max-width: 163px" cover></v-img> -->
 						</div>
 					</div>
 				</v-col>

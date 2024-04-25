@@ -9,19 +9,19 @@
 			</div>
 			<div class="px-4 px-lg-0">
 				<p v-if="seedingFutures.info_title"
-					class="bg-white rounded-pill px-8 py-1 fs-7--lg-up fw-600 text-center mx-w-m my-16 text-primary-dark">{{
+					class="bg-white rounded-xl px-8 py-1 fs-7--lg-up fw-600 text-center mx-w-m my-16 text-primary-dark">{{
 					seedingFutures.info_title }}</p>
 			</div>
 
-			<v-row class="mx-w-m my-6  px-5 px-lg-0"
+			<v-row class="mx-w-m my-6  px-5 px-lg-0  bg-primary-05"
 				v-if="seedingFutures.info_article_title && seedingFutures.info_article_text">
 				<v-col cols="12" md="5">
-					<div class="overflow-hidden box-shadow">
+					<div class="overflow-hidden box-shadow-05">
 						<v-img :src="`/img/seeding-futures/Why.jpeg`" class="hover-1"></v-img>
 					</div>
 				</v-col>
 				<v-col cols="12" md="7">
-					<h3 class="mb-4 fs-8 text-white text-shadow">{{ seedingFutures.info_article_title }}</h3>
+					<h3 class="mb-4 fs-8 text-white text-shadow-05">{{ seedingFutures.info_article_title }}</h3>
 					<p class="text-white text-shadow">{{ seedingFutures.info_article_text }}</p>
 				</v-col>
 			</v-row>
@@ -42,12 +42,8 @@
 						<v-img :src="`/img/seeding-futures/${item}.jpg`" class="hover-1"></v-img>
 					</div>
 					<div class="d-flex justify-center">
-						<p class="text-center fs-3 fs-4--md fw-bold bg-primary mb-4 px-4 px-lg-8 py-1 rounded-pill">{{
+						<p class="text-center fs-3 fs-4--md fw-bold bg-primary mb-4 px-4 px-lg-8 py-1 rounded-xl">{{
 							seedingFutures[item + '_title'] }}</p>
-					</div>
-					<div class="d-flex justify-center fw-500 mb-4 text-shadow">
-						{{ seedingFutures.ABCD_items_text }}
-						<v-icon color="dark" class="ml-2" icon="mdi-heart" size="small"></v-icon>
 					</div>
 					<div class="text-center text-shadow" v-html="seedingFutures[item + '_items']"></div>
 				</v-col>
@@ -111,11 +107,7 @@
 						<div class="overflow-hidden mb-4" style="max-width: 170px;border-radius: 100%;margin: auto;">
 							<v-img :src="`/img/seeding-futures/donate-${i + 1}.jpg`" class="hover-1"></v-img>
 						</div>
-						<p class="fw-700 text-center mb-4 text-white text-shadow">{{ seedingFutures[donate.title] }}</p>
-						<p class="text-center fw-500 mb-4 text-white text-shadow">
-							{{ seedingFutures[donate.text] }}
-						</p>
-						<div class="d-flex justify-center ga-2">
+						<div class="d-flex justify-center mb-4 ga-2">
 							<v-btn variant="flat" v-for="button in donate.buttons" :href="button.href" target="_blank">
 
 								<span v-if="button.text">
@@ -125,6 +117,10 @@
 								<v-icon v-else color="white" :icon="`mdi-${button.icon}`"></v-icon>
 							</v-btn>
 						</div>
+						<p class="fw-700 text-center mb-4 text-white text-shadow">{{ seedingFutures[donate.title] }}</p>
+						<p class="text-center fw-500 mb-4 text-white text-shadow">
+							{{ seedingFutures[donate.text] }}
+						</p>
 					</v-col>
 				</v-row>
 			</div>
@@ -201,7 +197,7 @@ const donates = ref([
 		title: "donate_item_3_title",
 		text: "donate_item_3_text",
 		buttons: [
-			{ icon: "facebook", href: "https://www.facebook.com/thxdreams/" },
+			// { icon: "facebook", href: "https://www.facebook.com/thxdreams/" },
 			{ icon: "twitter", href: "https://twitter.com/thx_dreams" },
 			{ icon: "email", href: "mailto:info@thxdreams.com" },
 			// {icon:"whatsapp",href:""},
@@ -231,46 +227,5 @@ const donates = ref([
 .banner-white {
 	background-color: #fff;
 	color: $primary;
-}
-
-.gradient {
-	width: 100%;
-	height: 100px;
-	background-image: linear-gradient(180deg, #00000000, rgba($primary, 1));
-}
-
-$linear: linear-gradient(0deg, rgba(black, 0) 85%, rgba($primary, 0.8) 100%);
-
-.bg-gradient {
-	background-image: url('/img/fondo-web-thx.jpg');
-	background-color: $darker;
-}
-
-.img-size {
-	max-width: 250px
-}
-
-@media (min-width: 900px) {
-	.img-size {
-		max-width: 400px
-	}
-}
-
-
-.parallax {
-	// min-height: 500px;
-	background-attachment: fixed;
-	background-position: top;
-	// background-repeat: no-repeat;
-	//background-color: rgba($color: #FFF, $alpha: 1.0) !important;
-	background-size: cover;
-	-webkit-background-size: cover;
-	/* safari may need this */
-}
-
-@media (max-width: 960px) {
-	.parallax {
-		background-position: center;
-	}
 }
 </style>

@@ -5,7 +5,7 @@
 			<v-col cols="12" lg="4">
 				<div class="d-flex flex-column" :class="{ 'align-center': mq('smAndDown') }">
 					<NuxtLink :to="'/' + route.path" v-for="route, i in routes" :key="i" style="line-height: 2.3rem;"
-						class="fw-700--sm-down fs-lg--sm-down text-white hover-1">
+						class="fw-700--md-up fw-300--sm fs-lg--sm-down text-white hover-1">
 						{{ route.name }}
 					</NuxtLink>
 				</div>
@@ -69,7 +69,10 @@
 
 <script setup>
 const { socials, contacts } = useHelpersStore();
-const  routes = useHelpersStore().getRoutes;
+
+const languagesStore = useLanguagesStore()
+languagesStore.fetchLanguages()
+const { routes } = storeToRefs(languagesStore);
 </script>
 
 <style lang="scss" scoped>

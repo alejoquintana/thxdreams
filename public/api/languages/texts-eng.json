@@ -1,4 +1,32 @@
 {
+	"routes": [
+		{
+			"name": "Our dreams",
+			"path": "our-dreams"
+		},
+		{
+			"name": "Advisory board",
+			"path": "advisory-board"
+		},
+		{
+			"name": "Seeding futures",
+			"path": "seeding-futures"
+		},
+		{
+			"name": "Our commitments",
+			"path": "our-commitments",
+			"nav": false
+		},
+		{
+			"name": "Careers",
+			"path": "careers",
+			"nav": false
+		},
+		{
+			"name": "Contact Us",
+			"path": "contact-us"
+		}
+	],
 	"ourDreams": {
 		"title": "Learn here about our current Dreams and those that our co-branding partners and shoppers like you, already helped come true",
 		"filters_form_title": "OUR DREAM",

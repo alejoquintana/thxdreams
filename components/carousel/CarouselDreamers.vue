@@ -1,4 +1,5 @@
 <template>
+	<!-- <v-btn @click="changescroller">scroller</v-btn> -->
 	<div class="relative d-flex-center not-mx-w-m">
 		<div class="grid-item main">
 			<div class="items" ref="slider">
@@ -45,7 +46,7 @@
 							class="btn btn-outlined-white text-white">
 							<p>
 								<v-icon class="pe-2" icon="mdi-instagram" color="white"></v-icon>
-								Visit as @thx_Dreams
+								Visit us @thx_Dreams
 							</p>
 						</a>
 					</v-col>
@@ -57,6 +58,8 @@
 
 <script setup>
 const forceUpdate = ref(0);
+const scroller = ref(100);
+
 const dreamersStore = useDreamersStore()
 dreamersStore.fetchCarouselDreamers()
 const forceRerender = () => {
@@ -71,7 +74,7 @@ onMounted(() => {
 		if (!slider.value || !slider.value) return
 		slider.value.scroll({
 			top: 0,
-			left: slider.value.scrollLeft + 100,
+			left: slider.value.scrollLeft + scroller.value,
 			behavior: "smooth",
 		});
 	}, 1000);

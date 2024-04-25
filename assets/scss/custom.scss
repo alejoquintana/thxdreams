@@ -27,9 +27,17 @@ body.modal-open {
 	text-shadow: 0 0 5px black,
 		0 0 20px black;
 }
+.text-shadow-05 {
+	text-shadow: 
+	// 0 0 5px black,
+		0 0 20px black;
+}
 .box-shadow {
 	box-shadow:
 		0 0 20px black;
+}
+.box-shadow-05 {
+	box-shadow:0 0 20px rgba($color: #000000, $alpha: 0.5);
 }
 
 .cursor-pointer{
@@ -183,16 +191,7 @@ a:not(.classic-a) {
 @media (max-width:600px) {}
 
 // sm	600px > < 960px
-@media (min-width:600px) and (max-width:960px) {
-	.fw-100--sm {font-weight: 100 !important}
-	.fw-200--sm {font-weight: 200 !important}
-	.fw-300--sm {font-weight: 300 !important}
-	.fw-400--sm {font-weight: 400 !important}
-	.fw-500--sm {font-weight: 500 !important}
-	.fw-600--sm {font-weight: 600 !important}
-	.fw-700--sm {font-weight: 700 !important}
-	.fw-800--sm {font-weight: 800 !important}
-	.fw-900--sm {font-weight: 900 !important}
+@media (max-width:960px) {
 }
 
 @media (max-width:960px) {
@@ -223,10 +222,81 @@ a:not(.classic-a) {
 	.fw-700--sm-down {font-weight: 700 !important}
 	.fw-800--sm-down {font-weight: 800 !important}
 	.fw-900--sm-down {font-weight: 900 !important}
+	
+	.fs-xs--sm {font-size: 0.5rem}
+	.fs-sm--sm {font-size: 0.75rem}
+	.fs-sm-2--sm {font-size: 0.9rem}
+	.fs-md--sm {font-size: 1.2rem}
+	.fs-lg--sm {font-size: 1.5rem}
+	.fs-xl--sm {font-size: 2rem}
+	.fs-xxl--sm {font-size: 2.8rem}
+	.fs-1--sm {font-size: 0.5rem}
+	.fs-2--sm {font-size: 0.75rem}
+	.fs-3--sm {font-size: 0.9rem}
+	.fs-4--sm {font-size: 1.2rem}
+	.fs-5--sm {font-size: 1.35rem}
+	.fs-6--sm {font-size: 1.5rem}
+	.fs-7--sm {font-size: 1.75rem !important}
+	.fs-8--sm {font-size: 2rem !important}
+	.fs-9--sm {font-size: 2.8rem !important}
+	.fs-10--sm {font-size: 3.5rem !important}
+	.fs-11--sm {font-size: 4rem !important}
+
+
+	.fw-100--sm {font-weight: 100 !important}
+	.fw-200--sm {font-weight: 200 !important}
+	.fw-300--sm {font-weight: 300 !important}
+	.fw-400--sm {font-weight: 400 !important}
+	.fw-500--sm {font-weight: 500 !important}
+	.fw-600--sm {font-weight: 600 !important}
+	.fw-700--sm {font-weight: 700 !important}
+	.fw-800--sm {font-weight: 800 !important}
+	.fw-900--sm {font-weight: 900 !important}
+
+	.d-none--sm{display: none;}
 }
 
 // md	960px > < 1280px
 @media (min-width:960px) and (max-width:1280px) {
+	.fw-100--md {font-weight: 100 !important}
+	.fw-200--md {font-weight: 200 !important}
+	.fw-300--md {font-weight: 300 !important}
+	.fw-400--md {font-weight: 400 !important}
+	.fw-500--md {font-weight: 500 !important}
+	.fw-600--md {font-weight: 600 !important}
+	.fw-700--md {font-weight: 700 !important}
+	.fw-800--md {font-weight: 800 !important}
+	.fw-900--md {font-weight: 900 !important}
+}
+@media (min-width:961px)  {
+	.fw-100--md-up {font-weight: 100 !important}
+	.fw-200--md-up {font-weight: 200 !important}
+	.fw-300--md-up {font-weight: 300 !important}
+	.fw-400--md-up {font-weight: 400 !important}
+	.fw-500--md-up {font-weight: 500 !important}
+	.fw-600--md-up {font-weight: 600 !important}
+	.fw-700--md-up {font-weight: 700 !important}
+	.fw-800--md-up {font-weight: 800 !important}
+	.fw-900--md-up {font-weight: 900 !important}
+
+	.fs-xs--md-up {font-size: 0.5rem !important}
+	.fs-sm--md-up {font-size: 0.75rem !important}
+	.fs-sm-2--md-up {font-size: 0.9rem !important}
+	.fs-md--md-up {font-size: 1.2rem !important}
+	.fs-lg--md-up {font-size: 1.5rem !important}
+	.fs-xl--md-up {font-size: 2rem !important}
+	.fs-xxl--md-up {font-size: 2.8rem !important}
+	.fs-1--md-up {font-size: 0.5rem !important}
+	.fs-2--md-up {font-size: 0.75rem !important}
+	.fs-3--md-up {font-size: 0.9rem !important}
+	.fs-4--md-up {font-size: 1.2rem !important}
+	.fs-5--md-up {font-size: 1.35rem !important}
+	.fs-6--md-up {font-size: 1.5rem !important}
+	.fs-7--md-up {font-size: 1.75rem !important}
+	.fs-8--md-up {font-size: 2rem !important}
+	.fs-9--md-up {font-size: 2.8rem !important}
+	.fs-10--md-up {font-size: 3.5rem !important}
+	.fs-11--md-up {font-size: 4rem !important}
 }
 
 // lg	1280px > < 1920px

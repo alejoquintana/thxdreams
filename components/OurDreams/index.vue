@@ -2,7 +2,6 @@
 	<ParallaxBackground gradient>
 		<Transition name="fade">
 			<modal v-if="showModal" @closeModal="closeModal()">
-
 				<v-row v-if="dreamersStore.dreamer && dreamersStore.dreamer.id" style="max-width: 800px;" class="mt-4">
 					<v-col cols="12">
 						<v-responsive :aspect-ratio="16 / 9" class="ma-auto">
@@ -11,14 +10,20 @@
 						</v-responsive>
 					</v-col>
 					<v-col cols="12" class=" px-8">
-						<div class="text-white d-flex justify-space-between align-end">
-							<h1 class="">
-								{{ dreamersStore.dreamer.name }}
-							</h1>
-							<span class="fw-00">
-								{{ dreamersStore.dreamer.country }}, {{ dreamersStore.dreamer.year }}
-							</span>
-						</div>
+						<v-row>
+							<v-col cols="12" md="8" class="pb-0">
+								<h1 class="text-white text-center text-lg-left">
+									{{ dreamersStore.dreamer.name }}
+								</h1>
+							</v-col>
+							<v-col cols="12" md="4" class="pt-0 d-flex justify-lg-end justify-center align-end">
+								<span class="fw-00 text-white">
+									{{ dreamersStore.dreamer.country }}, {{ dreamersStore.dreamer.year }}
+								</span>
+							</v-col>
+						</v-row>
+						<!-- <div class="text-white d-flex justify-space-between align-end">
+						</div> -->
 						<div class="text-white pt-4 fs-3--lgAndUp" v-html="dreamersStore.dreamer.text"></div>
 					</v-col>
 					<v-col cols="12" class="my-8 d-flex justify-center">
@@ -35,7 +40,7 @@
 							class="btn btn-outlined-white text-white">
 							<p>
 								<v-icon class="pe-2" icon="mdi-instagram" color="white"></v-icon>
-								Visit as @thx_Dreams
+								Visit us @thx_Dreams
 							</p>
 						</a>
 					</v-col>
@@ -235,46 +240,5 @@ function goFetchDreamersShort() {
 
 :deep(.v-btn) {
 	height: calc(var(--v-btn-height) + 4px) !important;
-}
-
-.gradient {
-	width: 100%;
-	height: 100px;
-	background-image: linear-gradient(180deg, #00000000, rgba($primary, 1));
-}
-
-$linear: linear-gradient(0deg, rgba(black, 0) 85%, rgba($primary, 0.8) 100%);
-
-.bg-gradient {
-	background-image: url('/imgs/fondo-web-thx.jpg');
-	background-color: $darker;
-}
-
-.img-size {
-	max-width: 250px
-}
-
-@media (min-width: 900px) {
-	.img-size {
-		max-width: 400px
-	}
-}
-
-
-.parallax {
-	// min-height: 500px;
-	background-attachment: fixed;
-	background-position: top;
-	// background-repeat: no-repeat;
-	//background-color: rgba($color: #FFF, $alpha: 1.0) !important;
-	background-size: cover;
-	-webkit-background-size: cover;
-	/* safari may need this */
-}
-
-@media (max-width: 960px) {
-	.parallax {
-		background-position: center;
-	}
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-	<Careers />
+	<ContactUs />
 </template>
 
 <script setup>

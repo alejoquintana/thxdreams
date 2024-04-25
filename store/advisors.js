@@ -2,13 +2,15 @@ import {
 	defineStore
 } from "pinia"
 
+import {useLanguagesStore} from './languages'
+
 export const useAdvisorsStore = defineStore("advisors", {
 	state: () => ({
 		advisors: [],
 	}),
 	actions: {
 		async fetchAdvisors() {
-			await fetch(getApi('advisors') + '')
+			await fetch(getApi('advisors') + '?language=' + useLanguagesStore().language)
 				.then(response => response.json())
 				.then(response => {
 					// console.log("response",response);

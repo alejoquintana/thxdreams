@@ -52,7 +52,7 @@ const { gradient } = defineProps({
 
 @media (max-width: 960px) {
 	.parallax {
-		background-position: center;
+		background-position: right;
 	}
 }
 </style>

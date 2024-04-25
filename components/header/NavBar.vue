@@ -8,15 +8,16 @@
 				</NuxtLink>
 			</div>
 			<div v-if="mq('mdAndUp')" class="d-flex-center ga-12 text-white fs-4">
-				<NuxtLink :to="'/'+route.path" v-for="route,i in routes" :key="i" class="routes hover-2"
+				<NuxtLink :to="'/'+route.path" v-for="route, i in navRoutes(routes)" :key="i" class="routes hover-2"
 					:class="{'selected': route.path == PageRoute.name}">
 					{{ route.name }}
 				</NuxtLink>
 				<!-- {{ languagesStore.language }}
 				{{ language }} -->
-				<!-- <v-select variant="outlined" name="language" id="language" hide-details @update:menu="setLanguage()"
-					v-model="language" density="comfortable" :items="[{title: 'ES',value: 'esp'},{title: 'EN',value: 'eng'}]">
-				</v-select> -->
+				<v-select variant="outlined" name="language" id="language" hide-details @update:menu="setLanguage()"
+					v-model="language" density="comfortable"
+					:items="[{title: 'ES',value: 'esp'},{title: 'EN',value: 'eng'}]">
+				</v-select>
 			</div>
 			<div class="d-flex align-center ga-3">
 
@@ -36,7 +37,7 @@
 					<v-icon icon="mdi-close" color="white" size="x-large" @click="logged"></v-icon>
 				</div>
 				<div class="d-flex flex-column align-center" v-click-outside="logged">
-					<NuxtLink :to="'/'+route.path" v-for="route,i in routes" :key="i" class="ma-4 border-bottom"
+					<NuxtLink :to="'/'+route.path" v-for="route, i in navRoutes(routes)" :key="i" class="ma-4 border-bottom"
 						:class="{ 'selected': route.path == PageRoute.name }" @click="showSideMenu=false">{{ route.name }}
 					</NuxtLink>
 				</div>
@@ -46,19 +47,31 @@
 </template>
 
 <script setup>
+const languagesStore = useLanguagesStore()
+languagesStore.fetchLanguages()
+const { routes } = storeToRefs(languagesStore);
+
+
 const PageRoute = useRoute()
-const routes = reactive(useHelpersStore().getNavRoutes);
 const imgStyle = ref(0)
 const headerStyle = ref(0)
 const showSideMenu = ref(false)
-const languagesStore = useLanguagesStore()
 const language = ref(languagesStore.language)
+
+function navRoutes(routes) {
+	return routes.filter((route) => {
+		console.log("route.nav",route.nav);
+		return route.nav == undefined
+	})
+	// return routes
+}
 
 function setLanguage(e) {
 	languagesStore.setLanguage(language.value)
 	// console.log("e", language.value);
-	routes.value = useHelpersStore().getNavRoutes
+	// routes.value = useHelpersStore().getNavRoutes
 }
+
 function logScroll() {
 	imgStyle.value = window.scrollY / 500;
 	headerStyle.value = window.scrollY / 500;

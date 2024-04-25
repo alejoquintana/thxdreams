@@ -42,6 +42,7 @@ export const useHelpersStore = defineStore('helpers', {
 				icon: 'linkedin'
 			},
 		],
+		routes: [],
 		routes_eng: [{
 				name: "Our dreams",
 				path: 'our-dreams'
@@ -82,18 +83,18 @@ export const useHelpersStore = defineStore('helpers', {
 				path: 'sembrando-futuros'
 			},
 			{
-				name: "Nuestros compromisos",
-				path: 'nuestros-compromisos',
+				name: "Nuestro compromiso",
+				path: 'nuestro-compromiso',
 				nav: false
 			},
 			{
-				name: "Careras",
-				path: 'carreras',
+				name: "Empleos",
+				path: 'empleos',
 				nav: false
 			},
 			{
-				name: "Contactanos",
-				path: 'contactanos',
+				name: "Contacto",
+				path: 'contacto',
 			},
 		]
 	}),
@@ -104,8 +105,8 @@ export const useHelpersStore = defineStore('helpers', {
 		},
 		getNavRoutes: (state) => {
 			const language = useLanguagesStore().language
-			let lang_routes = language == "eng" ? state.routes_eng : state.routes_esp;
-			return lang_routes.filter(route =>
+			state.routes = language == 'eng' ? state.routes_eng : state.routes_esp
+			return state.routes.filter(route =>
 				//{
 				//console.log("route.nav",route.nav);
 				//return
@@ -153,11 +154,21 @@ export const useHelpersStore = defineStore('helpers', {
 				.catch((error) => console.log(error));
 			return true
 		},
+		setRoutes(lang) {
+			if (lang == 'eng') {
+				console.log("lang",lang);
+				this.routes = this.routes_eng
+			} else {
+				console.log("lang",lang);
+				this.routes = this.routes_esp
+			}
+		},
 		getImagePath(src) {
-			return "https://phpstack-628703-4271081.cloudwaysapps.com/imgs/" + src;
+			if (process.env.NODE_ENV == "development") {
+				return "https://phpstack-628703-4271081.cloudwaysapps.com/imgs/" + src;
+			}
 			return "https://thxdreams.com/img/"+src;
 		},
-
 	},
 })
 

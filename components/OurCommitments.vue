@@ -5,17 +5,15 @@
 				<h1 class="text-center">
 					OUR COMMITMENT: BUILDING A BETTER FUTURE TOGETHER
 				</h1>
-				<br>
+				<br />
 				<p>
-					At THX Dreams, we are driven by a powerful mission: to create social impact by empowering farmworkers,
+					At Thx!, we are driven by a powerful mission: to create social impact by empowering farmworkers,
 					fostering connections, and generating value for everyone involved. We believe this can only be achieved
-					through
-					unwavering ethical conduct and a commitment to building enriching relationships with all stakeholders.
+					through unwavering ethical conduct and a commitment to building enriching relationships with all
+					stakeholders.
 				</p>
-				<br>
-				<h3 class="mb-3">
-					Our Guiding Principles:
-				</h3>
+				<br />
+				<h3 class="mb-3">Our Guiding Principles:</h3>
 				<strong>Ethical Conduct and Responsibility</strong>
 				<ul class="pl-10">
 					<li>
@@ -30,7 +28,7 @@
 						highest standards.
 					</li>
 				</ul>
-				<br>
+				<br />
 				<strong>Respect for Others and the Environment</strong>
 				<ul class="pl-10">
 					<li>
@@ -46,44 +44,37 @@
 						personal information entrusted to us.
 					</li>
 				</ul>
-				<br>
+				<br />
 				<strong>Commitment to Transparency and Accountability</strong>
 				<ul class="pl-10">
 					<li>
 						<strong>Transparency and Accuracy in Information:</strong> We provide accurate and complete
-						information
-						about our activities and policies.
+						information about our activities and policies.
 					</li>
 					<li>
 						<strong>Independent Advisory Board:</strong> Our independent body oversees our social impact mission
-						and
-						code enforcement, ensuring transparency and best practices.
+						and code enforcement, ensuring transparency and best practices.
 					</li>
 				</ul>
-				<br>
+				<br />
 
-				<strong>
-					Learning more about our principles:
-				</strong>
+				<strong>Learning more about our principles: </strong>
 				<!-- *aca poner links a ambos documentos -->
-				<br>
-
-				Code of Ethics
-				<br>
-
-				Sustainability Policy
-
-				<br>
-				<br>
+				<br />
+				<a href="https://thxdreams.com/assets/docs/code-of-ethics.pdf" target="_blank" class="classic-a"
+					rel="noopener noreferrer">Code of Ethics</a>
+				<br />
+				<a href="https://thxdreams.com/assets/docs/sustainability.pdf" target="_blank" class="classic-a"
+					rel="noopener noreferrer">Sustainability Policy</a>
+				<br />
+				<br />
 
 				<p>
 					For any concerns or reports of potential violations of this Code of Conduct or THX LLC's principles, we
-					provide the email <a href="mailto:transparency@thxdreams.com" target="_blank" class="classic-a"
+					provide the email
+					<a href="mailto:transparency@thxdreams.com" target="_blank" class="classic-a"
 						rel="noopener noreferrer">transparency@thxdreams.com</a>. This email is managed directly by the
-					Advisory
-					Board, and we
-					guarantee
-					the confidentiality of personal data.
+					Advisory Board, and we guarantee the confidentiality of personal data.
 				</p>
 			</div>
 		</div>
@@ -91,10 +82,9 @@
 </template>
 
 <script setup>
-const route = useRoute()
-const title = route.name.replace('-', ' ')
+const route = useRoute();
+const title = route.name.replace("-", " ");
 useHead({
-	title: title.charAt(0).toUpperCase()
-		+ title.slice(1) + ' - THX!'
-})
+	title: title.charAt(0).toUpperCase() + title.slice(1) + " - THX!",
+});
 </script>
