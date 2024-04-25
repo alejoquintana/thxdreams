@@ -29,7 +29,6 @@ export const useLanguagesStore = defineStore('languages', {
 				fetch(`https://thxdreams.com/api/languages/texts-${this.language}.json?v=${new Date().getTime()}`)
 					.then(response => response.json())
 					.then(response => {
-						console.log("response.routes",response.routes);
 						this.home = response.home
 						this.routes = response.routes
 						this.ourDreams = response.ourDreams

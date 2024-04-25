@@ -13,10 +13,10 @@
 					seedingFutures.info_title }}</p>
 			</div>
 
-			<v-row class="mx-w-m my-6  px-5 px-lg-0  bg-primary-05"
+			<v-row class="mx-w-m my-6  px-5 px-lg-0 rounded-xl bg-primary-05"
 				v-if="seedingFutures.info_article_title && seedingFutures.info_article_text">
 				<v-col cols="12" md="5">
-					<div class="overflow-hidden box-shadow-05">
+					<div class="overflow-hidden rounded-xl box-shadow-05">
 						<v-img :src="`/img/seeding-futures/Why.jpeg`" class="hover-1"></v-img>
 					</div>
 				</v-col>
@@ -50,7 +50,7 @@
 			</v-row>
 
 			<div class="px-4 px-lg-0">
-				<div class="mx-w-m my-16 pa-4 pa-lg-8 bg-primary rounded-xl " v-if="
+				<div class="mx-w-m my-16 pa-4 pa-lg-8 bg-primary rounded-xl" v-if="
 					seedingFutures.apply_programs_title &&
 					seedingFutures.apply_programs_text &&
 					seedingFutures.apply_programs_form_title &&
@@ -178,7 +178,6 @@ function sendApply() {
 }
 
 const { seedingFutures } = storeToRefs(languagesStore);
-// console.log("seedingFutures.value", seedingFutures);
 const donates = ref([
 	{
 		title: "donate_item_1_title",

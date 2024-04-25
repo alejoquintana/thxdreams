@@ -10,31 +10,40 @@
 		</div>
 		<Transition name="fade">
 			<modal v-if="showModal" @closeModal="closeModal()">
-				<!-- <p class="text-white">
-					{{ dreamersStore.dreamer }}
-				</p> -->
-				<v-row v-if="dreamersStore.dreamer && dreamersStore.dreamer.id" style="max-width: 800px;" class="mt-4">
+				<v-row v-if="dreamer && dreamer.id" style="max-width: 800px;" class="mt-4">
 					<v-col cols="12">
 						<v-responsive :aspect-ratio="16 / 9" class="ma-auto">
-							<iframe :src="dreamersStore.dreamer.video" class="w-100 h-100 rounded-xl" webkitallowfullscreen
+							<iframe :src="dreamer.video" class="w-100 h-100 rounded-xl" webkitallowfullscreen
 								mozallowfullscreen allowfullscreen frameBorder="0"></iframe>
 						</v-responsive>
 					</v-col>
-					<v-col cols="12" class=" px-8">
-						<div class="text-white d-flex justify-space-between align-end">
-							<h1 class="">
-								{{ dreamersStore.dreamer.name }}
-							</h1>
-							<span class="fw-00">
-								{{ dreamersStore.dreamer.country }}, {{ dreamersStore.dreamer.year }}
-							</span>
-						</div>
-						<div class="text-white pt-4 fs-3--lgAndUp" v-html="dreamersStore.dreamer.text"></div>
-					</v-col>
-					<v-col cols="12" class="my-8 d-flex justify-center">
-						<!-- {{ dreamersStore.dreamer }} -->
+					<v-col cols="12" class="px-md-8">
 						<v-row>
-							<v-col cols="12" lg="4" v-for="img, i in dreamersStore.dreamer.images.slice(0, 3)" :key="i"
+							<v-col cols="12" md="8" class="pb-0">
+								<h1 class="text-white text-center text-lg-left">
+									{{ dreamer.name }}
+								</h1>
+							</v-col>
+							<v-col cols="12" md="4" class="pt-0 d-flex justify-lg-end justify-center align-end">
+								<span class="fw-00 text-white">
+									<span v-if="dreamer.country">{{ dreamer.country }}</span>
+									<span v-if="dreamer.country && dreamer.year && dreamer.year != 0">,
+									</span>
+									<span v-if="dreamer.year && dreamer.year != 0">{{ dreamer.year }}</span>
+								</span>
+							</v-col>
+						</v-row>
+						<div class="text-white pt-4 fs-3--lgAndUp" v-html="dreamer.text"></div>
+					</v-col>
+					<v-col cols="12" class="d-flex justify-center pt-0" v-if="dreamer.grower">
+						<p class="text-white fs-4 fs-6--md fw-500">
+							<span v-if="useLanguagesStore().language == 'eng'">Grower</span>
+							<span v-else>Grower</span>: {{ dreamer.grower }}
+						</p>
+					</v-col>
+					<v-col cols="12" class="my-4 d-flex justify-center">
+						<v-row>
+							<v-col cols="12" lg="4" v-for="img, i in dreamer.images.slice(0, 3)" :key="i"
 								style="max-height: 330px;">
 								<v-img :src="useHelpersStore().getImagePath('sonadores_fotos/' + img.id + '.jpg')"
 									class="h-100 rounded-xl" cover></v-img>
@@ -46,7 +55,12 @@
 							class="btn btn-outlined-white text-white">
 							<p>
 								<v-icon class="pe-2" icon="mdi-instagram" color="white"></v-icon>
-								Visit us @thx_Dreams
+								<span v-if="language == 'eng'">
+									Visit us @thx_Dreams
+								</span>
+								<span v-else>
+									Visitanos @thx.gracias
+								</span>
 							</p>
 						</a>
 					</v-col>
@@ -61,14 +75,20 @@ const forceUpdate = ref(0);
 const scroller = ref(100);
 
 const dreamersStore = useDreamersStore()
+const languagesStore = useLanguagesStore()
+
 dreamersStore.fetchCarouselDreamers()
+languagesStore.fetchLanguages()
+
+const { dreamer } = storeToRefs(dreamersStore);
+const { language } = storeToRefs(languagesStore);
+
 const forceRerender = () => {
 	forceUpdate.value += 1;
 };
 //const carousel = ref(null);
 onMounted(() => {
 	forceRerender("moun");
-	// console.log("slider.value",slider.value);
 	if (!slider.value || !slider.value) return
 	var autoScrolling = setInterval(() => {
 		if (!slider.value || !slider.value) return

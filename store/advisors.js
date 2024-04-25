@@ -13,7 +13,6 @@ export const useAdvisorsStore = defineStore("advisors", {
 			await fetch(getApi('advisors') + '?language=' + useLanguagesStore().language)
 				.then(response => response.json())
 				.then(response => {
-					// console.log("response",response);
 					this.advisors = response
 				})
 				.catch((error) => console.log(error));

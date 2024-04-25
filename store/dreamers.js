@@ -33,7 +33,6 @@ export const useDreamersStore = defineStore('dreamers', {
 			return true
 		},
 		async fetchDreamersShort(filters = null) {
-			console.log("filters", filters);
 			let url = getApi('dreamers_short') + '?v=' + new Date().getTime()
 			if (filters) {
 				url = url + `&accomplished=${filters.accomplished}&country=${filters.country}&year=${filters.year}&grower=${filters.grower}`
@@ -41,11 +40,9 @@ export const useDreamersStore = defineStore('dreamers', {
 			await fetch(url)
 				.then(response => {
 					let json = response.json()
-					console.log("response", json);
 					return json
 				})
 				.then(response => {
-					console.log("response",response);
 					this.dreamers = response.dreamers
 				})
 				.catch((error) => console.log(error));

@@ -63,7 +63,6 @@ languagesStore.fetchLanguages()
 const { contactUs } = storeToRefs(languagesStore);
 
 function submitForm() {
-	console.log("submit!!")
 
 	const name = document.getElementById("inputName").value
 	const email = document.getElementById("inputEmail").value
@@ -73,7 +72,6 @@ function submitForm() {
 
 	if (!name || !validateEmail(email) | !message) {
 		document.getElementById("contact__contentAlertForm").classList.remove("d-none")
-		console.log("Formulario incompleto")
 		return
 	}
 

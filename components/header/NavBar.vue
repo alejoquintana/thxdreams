@@ -60,7 +60,6 @@ const language = ref(languagesStore.language)
 
 function navRoutes(routes) {
 	return routes.filter((route) => {
-		console.log("route.nav",route.nav);
 		return route.nav == undefined
 	})
 	// return routes
@@ -68,8 +67,6 @@ function navRoutes(routes) {
 
 function setLanguage(e) {
 	languagesStore.setLanguage(language.value)
-	// console.log("e", language.value);
-	// routes.value = useHelpersStore().getNavRoutes
 }
 
 function logScroll() {

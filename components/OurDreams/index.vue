@@ -18,13 +18,20 @@
 							</v-col>
 							<v-col cols="12" md="4" class="pt-0 d-flex justify-lg-end justify-center align-end">
 								<span class="fw-00 text-white">
-									{{ dreamersStore.dreamer.country }}, {{ dreamersStore.dreamer.year }}
+									<span v-if="dreamersStore.dreamer.country">{{ dreamersStore.dreamer.country }}</span>, <span
+										v-if="dreamersStore.dreamer.year && dreamersStore.dreamer.year != 0">{{
+										dreamersStore.dreamer.year }}</span>
 								</span>
 							</v-col>
 						</v-row>
 						<!-- <div class="text-white d-flex justify-space-between align-end">
 						</div> -->
 						<div class="text-white pt-4 fs-3--lgAndUp" v-html="dreamersStore.dreamer.text"></div>
+					</v-col>
+					<v-col cols="12" class="d-flex justify-center pt-0" v-if="dreamersStore.dreamer.grower">
+						<span class="text-white fs-4 fs-6--md fw-500">
+							Grower: {{ dreamersStore.dreamer.grower }}
+						</span>
 					</v-col>
 					<v-col cols="12" class="my-8 d-flex justify-center">
 						<v-row>
@@ -145,9 +152,7 @@ dreamersStore.fetchDreamersShort()
 useHelpersStore().fetchFilters('countries')
 useHelpersStore().fetchFilters('years')
 useHelpersStore().fetchFilters('growers')
-function consoleLog(param) {
-	console.log("param", param);
-}
+
 
 const showModal = ref(false);
 // const dreamer_images = dreamersStore.dreamer.images.slice(0, 3)
@@ -201,7 +206,6 @@ const year = reactive(year_eng)
 const grower = reactive(grower_eng)
 
 function goFetchDreamersShort() {
-	console.log("grower.value.selected",grower.value.selected);
 	dreamersStore.fetchDreamersShort({
 		accomplished: accomplished.value.selected,
 		country: country.value.selected,

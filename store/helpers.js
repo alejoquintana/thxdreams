@@ -108,7 +108,6 @@ export const useHelpersStore = defineStore('helpers', {
 			state.routes = language == 'eng' ? state.routes_eng : state.routes_esp
 			return state.routes.filter(route =>
 				//{
-				//console.log("route.nav",route.nav);
 				//return
 				route.nav == undefined
 				//}
@@ -123,7 +122,6 @@ export const useHelpersStore = defineStore('helpers', {
 			await fetch(url)
 				.then(response => response.json())
 				.then(response => {
-					console.log(column, response);
 					if (column == "years") {
 						this.years = response
 					}
@@ -149,17 +147,14 @@ export const useHelpersStore = defineStore('helpers', {
 			})
 				.then(response => response.json())
 				.then(response => {
-					console.log("response",response);
 				})
 				.catch((error) => console.log(error));
 			return true
 		},
 		setRoutes(lang) {
 			if (lang == 'eng') {
-				console.log("lang",lang);
 				this.routes = this.routes_eng
 			} else {
-				console.log("lang",lang);
 				this.routes = this.routes_esp
 			}
 		},
