@@ -1,14 +1,14 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Origin: *');
 
 // require_once($_SERVER['DOCUMENT_ROOT'].'/../private_html/db.php');
 $server = "localhost";
-$db = "thxweb";
-// $user = "cuatrolados";
-// $pass = "4Lados2023!";
+$db = "vvypdfrvju";
+$user = "vvypdfrvju";
+$pass = "7UrS4t9jnJ";
 
-$user = "thxmysql";
-$pass = "203hy.wFCL";
+// $user = "thxmysql";
+// $pass = "203hy.wFCL";
 
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);

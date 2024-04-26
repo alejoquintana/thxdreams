@@ -26,7 +26,7 @@ export const useLanguagesStore = defineStore('languages', {
 			if (changed || !this.fetched) {
 
 				// fetch(`/api/languages/texts-${this.language}.json`)
-				fetch(`https://thxdreams.com/api/languages/texts-${this.language}.json?v=${new Date().getTime()}`)
+				fetch(getLanguageJSON(this.language))
 					.then(response => response.json())
 					.then(response => {
 						this.home = response.home
@@ -49,3 +49,11 @@ export const useLanguagesStore = defineStore('languages', {
 
 	},
 })
+
+function getLanguageJSON(lang) {
+	if (process.env.NODE_ENV == "development") {
+		return `http://localhost:3000/api/languages/texts-${lang}.json`
+	}
+	return `api/languages/texts-${lang}.json`
+	// return "/api/" + table + ".php"
+}

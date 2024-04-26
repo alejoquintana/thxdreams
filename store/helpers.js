@@ -116,7 +116,7 @@ export const useHelpersStore = defineStore('helpers', {
 	},
 	actions: {
 		async fetchFilters(column, language = null) {
-			let url = getApi('filters') + '&filter=' + column
+			let url = getApi('filters') + '?filter=' + column
 			if (useLanguagesStore().language == "eng") url = url + '&language=eng'
 			if (useLanguagesStore().language == "esp") url = url + '&language=esp'
 			await fetch(url)
@@ -166,11 +166,9 @@ export const useHelpersStore = defineStore('helpers', {
 		},
 	},
 })
-
 function getApi(table) {
-	// if (process.env.NODE_ENV == "development") {
-		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php" + '?v=' + new Date().getTime()
-		return "https://thxdreams.com/api/" + table + ".php" + '?v=' + new Date().getTime()
-	// }
+	if (process.env.NODE_ENV == "development") {
+		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php"
+	}
 	return "/api/" + table + ".php"
 }

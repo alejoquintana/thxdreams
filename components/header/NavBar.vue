@@ -1,26 +1,25 @@
 <template>
-	<header class="header w-100" ref="header" :style="'background:rgba(80,53,148, '+headerStyle+')'">
+	<header class="header w-100" ref="header" :style="'background:rgba(80,53,148, ' + headerStyle + ')'">
 		<nav class="text-center pa-6 py-3 d-flex justify-space-between">
-			<div :style="'opacity:'+imgStyle">
+			<div :style="'opacity:' + imgStyle">
 				<NuxtLink to="/">
 					<img style="width:55px;object-fit: cover;" src="/imgs/logo_header_top-blanco.png" />
 					<!-- <v-img :width="55" cover src="/imgs/logo_header_top-blanco.png"></v-img> -->
 				</NuxtLink>
 			</div>
 			<div v-if="mq('mdAndUp')" class="d-flex-center ga-12 text-white fs-4">
-				<NuxtLink :to="'/'+route.path" v-for="route, i in navRoutes(routes)" :key="i" class="routes hover-2"
-					:class="{'selected': route.path == PageRoute.name}">
+				<NuxtLink :to="'/' + route.path" v-for="route, i in navRoutes(routes)" :key="i" class="routes hover-2"
+					:class="{ 'selected': route.path == PageRoute.name }">
 					{{ route.name }}
 				</NuxtLink>
 				<!-- {{ languagesStore.language }}
 				{{ language }} -->
 				<v-select variant="outlined" name="language" id="language" hide-details @update:menu="setLanguage()"
 					v-model="language" density="comfortable"
-					:items="[{title: 'ES',value: 'esp'},{title: 'EN',value: 'eng'}]">
+					:items="[{ title: 'ES', value: 'esp' }, { title: 'EN', value: 'eng' }]">
 				</v-select>
 			</div>
 			<div class="d-flex align-center ga-3">
-
 				<!-- <v-icon icon="mdi-magnify" color="white" size="x-large"></v-icon> -->
 				<v-icon v-if="mq('mdAndDown')" icon="mdi-menu" color="white" size="x-large"
 					@click="showSideMenu = true"></v-icon>
@@ -32,14 +31,22 @@
 	</header>
 	<Transition name="fade">
 		<div v-if="showSideMenu" class="side-menu-comp">
-			<div class="bg-primary pa-4 pb-0" v-click-outside="logged">
-				<div class="d-flex justify-end">
+			<div class="bg-primary pa-4 pb-4" v-click-outside="logged">
+				<div class="d-flex justify-space-between">
+					<div class="relative z-99999">
+						<v-select variant="outlined" name="language-sm" id="language-sm" hide-details @update:menu="setLanguage()"
+							v-model="language" density="compact"
+							:items="[{ title: 'ES', value: 'esp' }, { title: 'EN', value: 'eng' }]">
+						</v-select>
+					</div>
 					<v-icon icon="mdi-close" color="white" size="x-large" @click="logged"></v-icon>
 				</div>
-				<div class="d-flex flex-column align-center" v-click-outside="logged">
-					<NuxtLink :to="'/'+route.path" v-for="route, i in navRoutes(routes)" :key="i" class="ma-4 border-bottom"
-						:class="{ 'selected': route.path == PageRoute.name }" @click="showSideMenu=false">{{ route.name }}
+				<div class="d-flex flex-column align-center">
+					<NuxtLink :to="'/' + route.path" v-for="route, i in navRoutes(routes)" :key="i"
+						class="ma-4 border-bottom" :class="{ 'selected': route.path == PageRoute.name }"
+						@click="showSideMenu = false">{{ route.name }}
 					</NuxtLink>
+
 				</div>
 			</div>
 		</div>
@@ -93,23 +100,26 @@ onBeforeUnmount(() => {
 .header {
 	//background-color: ;
 	position: fixed;
-	z-index: 1000;
+	z-index: 10;
 }
-.side-menu-comp{
+
+.side-menu-comp {
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	z-index: 9999;
-	background-color: rgba(0, 0, 0,0.4);
+	z-index: 11;
+	background-color: rgba(0, 0, 0, 0.4);
 }
-.routes{
+
+.routes {
 	transition: all 500ms;
 	border-radius: 20px;
 	//font-weight: bold;
 	text-shadow: 0px 0px 10px black;
 	//background-color: rgba($primary, 0.3);
 }
-.selected{
+
+.selected {
 	background-color: rgba($primary, 0.5);
 	padding: 5px 20px;
 	border: 1px solid white;

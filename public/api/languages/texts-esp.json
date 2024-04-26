@@ -1,32 +1,38 @@
 {
 	"routes": [
 		{
-				"name": "Nuestros sueños",
-				"path": "nuestros-suenos"
+			"name": "Nuestros Sueños",
+			"path": "nuestros-suenos"
 		},
 		{
-				"name": "Consejo asesor",
-				"path": "consejo-asesor"
+			"name": "Consejo Asesor",
+			"path": "consejo-asesor"
 		},
 		{
-				"name": "Sembrando futuros",
-				"path": "sembrando-futuros"
+			"name": "Sembrando Futuros",
+			"path": "sembrando-futuros"
 		},
 		{
-				"name": "Nuestro compromiso",
-				"path": "nuestro-compromiso",
-				"nav": false
+			"name": "Nuestro Compromiso",
+			"path": "nuestro-compromiso",
+			"nav": false
 		},
 		{
-				"name": "Empleos",
-				"path": "empleos",
-				"nav": false
+			"name": "Empleos",
+			"path": "empleos",
+			"nav": false
 		},
 		{
-				"name": "Contacto",
-				"path": "contacto"
+			"name": "Contacto",
+			"path": "contacto"
 		}
 	],
+	"home": {
+		"first_text": "Nuestro objetivo es crear un vínculo entre los consumidores y los trabajadores rurales para que los <br class=\"d-none--sm\">trabajadores puedan alcanzar sus sueños. Al mismo tiempo, buscamos potenciar a las marcas <br class=\"d-none--sm\">dándoles más valor y significado.",
+		"how": "Como funciona Thx!",
+		"purchase_title": "¡TU COMPRA, PUEDE CAMBIAR UNA VIDA!",
+		"purchase_text": "Cada vez que compras un producto con la etiqueta Thx!, estas contribuyendo a que un trabajador rural pueda alcanzar un sueño. ¡Y, con Thx! puedes conocer exactamente a quién estas ayudando!"
+	},
 	"ourDreams": {
 		"title": "Learn here about our current Dreams and those that our co-branding partners and shoppers like you, already helped come true",
 		"filters_form_title": "OUR DREAM",
@@ -74,7 +80,7 @@
 		"shop_subtitle": "Con la compra de nuestras camisetas, ayudas a un trabajador rural a cumplir su sueño.",
 		"shop_button": "Compra y ayuda"
 	},
-	"ContactUs": {
+	"contactUs": {
 		"form_title": "CONTÁCTANOS",
 		"form_name": "NOMBRE",
 		"form_message": "MENSAJE",

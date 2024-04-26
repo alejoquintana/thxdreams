@@ -24,6 +24,14 @@ if (isset($_GET['filter']) && $_GET['filter'] == 'years') {
     $data = db_getAll($query);
     array_unshift($data,["id"=>0, "name" => $selected]);
 
+} else if (isset($_GET['filter']) && $_GET['filter'] == 'growers') {
+    
+    $selected = "ALL";
+    
+    $query = "SELECT * FROM growers;";
+    $data = db_getAll($query);
+    array_unshift($data,["id"=>0, "name" => $selected]);
+
 }
 
 echo json_encode($data);

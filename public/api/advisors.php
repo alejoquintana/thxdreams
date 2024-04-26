@@ -7,7 +7,7 @@ $positionField = "directorio_cargo";
 $textField = "directorio_texto";
 
 if (isset($_GET['language']) && $_GET['language'] == 'esp') {
-    $nameField .= "_es";
+    // $nameField .= "_es";
     $positionField .= "_es";
     $textField .= "_es";
 }

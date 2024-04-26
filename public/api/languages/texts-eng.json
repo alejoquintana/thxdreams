@@ -1,19 +1,19 @@
 {
 	"routes": [
 		{
-			"name": "Our dreams",
+			"name": "Our Dreams",
 			"path": "our-dreams"
 		},
 		{
-			"name": "Advisory board",
+			"name": "Advisory Board",
 			"path": "advisory-board"
 		},
 		{
-			"name": "Seeding futures",
+			"name": "Seeding Futures",
 			"path": "seeding-futures"
 		},
 		{
-			"name": "Our commitments",
+			"name": "Our Commitments",
 			"path": "our-commitments",
 			"nav": false
 		},
@@ -27,6 +27,12 @@
 			"path": "contact-us"
 		}
 	],
+	"home": {
+		"first_text": "Our Purpose is to provide authentic connections between shoppers and farmworkers <br class=\"d-none--sm\">while helping farmworkers ACHIEVE THEIR DREAMS, thus EMPOWERING BRANDS <br class=\"d-none--sm\"> with enhanced meaning and value.",
+		"how": "HOW THX! WORKS",
+		"purchase_title": "WATCH YOUR PURCHASE CHANGE A LIFE!",
+		"purchase_text": "Every time you buy a product with the Thx! sticker, you are helping a farmworker achieve a dream; and with Thx!, you know exactly who your contribution is helping."
+	},
 	"ourDreams": {
 		"title": "Learn here about our current Dreams and those that our co-branding partners and shoppers like you, already helped come true",
 		"filters_form_title": "OUR DREAM",
@@ -74,10 +80,10 @@
 		"shop_subtitle": "With the purchase of our t-shirts, you are helping a farmworker get closer to fulfill his dream.",
 		"shop_button": "Shop & Help"
 	},
-	"ContactUs": {
+	"contactUs": {
 		"form_title": "CONTACT US",
 		"form_name": "YOUR NAME",
-		"form_message": "COUNTRY",
+		"form_message": "MESSAGE",
 		"form_email": "EMAIL ADDRESS",
 		"form_button": "SEND MESSAGE"
 	}

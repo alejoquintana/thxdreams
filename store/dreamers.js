@@ -83,10 +83,8 @@ fetch('/api/users', {
 */
 
 function getApi(table) {
-	// if (process.env.NODE_ENV == "development") {
-		https://thxdreams.com/api/dreamers.php
-		// return "https://thxdreams.com/api/" + table + ".php"
+	if (process.env.NODE_ENV == "development") {
 		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php"
-	// }
+	}
 	return "/api/" + table + ".php"
 }

@@ -9,7 +9,8 @@
 			</div>
 			<div class="px-4 px-lg-0">
 				<p v-if="seedingFutures.info_title"
-					class="bg-white rounded-xl px-8 py-1 fs-7--lg-up fw-600 text-center mx-w-m my-16 text-primary-dark">{{
+					class="bg-white rounded-xl px-8 py-1 fs-5 fs-6--lg-up fw-600 text-center mx-w-m my-16 text-primary-dark">
+					{{
 					seedingFutures.info_title }}</p>
 			</div>
 
@@ -42,7 +43,7 @@
 						<v-img :src="`/img/seeding-futures/${item}.jpg`" class="hover-1"></v-img>
 					</div>
 					<div class="d-flex justify-center">
-						<p class="text-center fs-3 fs-4--md fw-bold bg-primary mb-4 px-4 px-lg-8 py-1 rounded-xl">{{
+						<p class="text-center fs-3 fs-4--md-up fw-bold bg-primary mb-4 px-4 px-lg-8 py-1 rounded-xl">{{
 							seedingFutures[item + '_title'] }}</p>
 					</div>
 					<div class="text-center text-shadow" v-html="seedingFutures[item + '_items']"></div>
@@ -60,7 +61,7 @@
 					seedingFutures.apply_programs_form_button
 				">
 					<h3 class="text-center fs-6 fs-7--lg fw-500">{{ seedingFutures.apply_programs_title }}</h3>
-					<p class="text-center fs-3 fs-4--md ma-auto" style="max-width: 800px;">{{
+					<p class="text-center fs-3--sm-down ma-auto" style="max-width: 800px;">{{
 						seedingFutures.apply_programs_text }}</p>
 					<p class="text-center fs-4 mt-8">{{ seedingFutures.apply_programs_form_title }}</p>
 					<v-row no-gutters>
