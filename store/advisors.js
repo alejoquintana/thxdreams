@@ -2,6 +2,7 @@ import {
 	defineStore
 } from "pinia"
 
+import { useHelpersStore } from './helpers'
 import {useLanguagesStore} from './languages'
 
 export const useAdvisorsStore = defineStore("advisors", {
@@ -10,7 +11,7 @@ export const useAdvisorsStore = defineStore("advisors", {
 	}),
 	actions: {
 		async fetchAdvisors() {
-			await fetch(getApi('advisors') + '?language=' + useLanguagesStore().language)
+			await fetch(useHelpersStore().getApi('advisors') + '&language=' + useLanguagesStore().language)
 				.then(response => response.json())
 				.then(response => {
 					this.advisors = response
@@ -20,10 +21,3 @@ export const useAdvisorsStore = defineStore("advisors", {
 		},
 	},
 })
-
-function getApi(table) {
-	if (process.env.NODE_ENV == "development") {
-		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php"
-	}
-	return "/api/" + table + ".php"
-}

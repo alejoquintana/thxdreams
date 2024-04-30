@@ -1,4 +1,6 @@
-import {defineStore} from 'pinia'
+import { defineStore } from 'pinia'
+import { useHelpersStore } from './helpers'
+
 
 export const useDreamersStore = defineStore('dreamers', {
 	state: () => ({
@@ -14,7 +16,7 @@ export const useDreamersStore = defineStore('dreamers', {
 	},
 	actions: {
 		async fetchFullDreamer(dreamerPath,id = 0) {
-			let url = `${getApi('dreamer')}?path=${(id == 0 ? dreamerPath.substring(1) : id)}`
+			let url = `${useHelpersStore().getApi('dreamer')}&path=${(id == 0 ? dreamerPath.substring(1) : id)}`
 			await fetch(url)
 				.then(response => response.json())
 				.then(response => {
@@ -24,7 +26,7 @@ export const useDreamersStore = defineStore('dreamers', {
 			return true
 		},
 		async fetchCarouselDreamers() {
-			await fetch(getApi('dreamers') + '?section=home-carousel')
+			await fetch(useHelpersStore().getApi('dreamers') + '&section=home-carousel')
 				.then(response => response.json())
 				.then(response => {
 					this.CarouselDreamers = response
@@ -33,7 +35,7 @@ export const useDreamersStore = defineStore('dreamers', {
 			return true
 		},
 		async fetchDreamersShort(filters = null) {
-			let url = getApi('dreamers_short') + '?v=' + new Date().getTime()
+			let url = useHelpersStore().getApi('dreamers_short')
 			if (filters) {
 				url = url + `&accomplished=${filters.accomplished}&country=${filters.country}&year=${filters.year}&grower=${filters.grower}`
 			}
@@ -57,34 +59,3 @@ export const useDreamersStore = defineStore('dreamers', {
 		},
 	},
 })
-
-/*
-fetch('/api/users', {
-		method: 'POST',
-		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			name: 'Dio',
-			password: 'irejectmyhumanityjojo',
-		}),
-	})
-	.then((response) => {
-		if (response.status >= 200 && response.status < 300) {
-			return response.json()
-		}
-		// reject if the response is not 2xx
-		throw new Error(response.statusText)
-	})
-	.then((user) => {
-		// ...
-	}) 
-*/
-
-function getApi(table) {
-	if (process.env.NODE_ENV == "development") {
-		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php"
-	}
-	return "/api/" + table + ".php"
-}

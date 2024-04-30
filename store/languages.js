@@ -1,12 +1,6 @@
-import {
-	defineStore
-} from 'pinia'
-import {
-	useHelpersStore
-} from './helpers'
-import {
-	useAdvisorsStore
-} from './advisors'
+import { defineStore } from 'pinia'
+import { useHelpersStore } from './helpers'
+import { useAdvisorsStore } from './advisors'
 
 
 
@@ -51,9 +45,9 @@ export const useLanguagesStore = defineStore('languages', {
 })
 
 function getLanguageJSON(lang) {
-	if (process.env.NODE_ENV == "development") {
-		return `http://localhost:3000/api/languages/texts-${lang}.json`
-	}
+	// if (process.env.NODE_ENV == "development") {
+	// 	return `http://localhost:3000/api/languages/texts-${lang}.json`
+	// }
 	return `api/languages/texts-${lang}.json`
 	// return "/api/" + table + ".php"
 }

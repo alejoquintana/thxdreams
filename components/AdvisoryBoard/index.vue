@@ -24,9 +24,12 @@
 							<div v-html="advisor.text" class="text-primary"></div>
 						</div>
 						<div class="d-flex justify-end">
-							<v-img :src="'/img/directorio/' + advisor.id + '.jpg'"
-								class="h-100 rounded-circle border-primary border-lg border-opacity-100"
-								style="max-width: 163px" cover></v-img>
+							<v-responsive :aspect-ratio="1" class="" style="max-width: 163px;">
+								<!-- <div style="max-width: 163px;"> -->
+									<v-img :src="'/img/directorio/' + advisor.id + '.jpg'"
+										class="h-100 rounded-circle border-primary border-lg border-opacity-100" cover></v-img>
+								<!-- </div> -->
+							</v-responsive>
 							<!-- <v-img :src="'https://thxdreams.com/img/directorio/' + 9 + '.jpg'"
 								class="h-100 rounded-circle border-primary border-lg border-opacity-100"
 								style="max-width: 163px" cover></v-img>

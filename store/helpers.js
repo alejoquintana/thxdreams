@@ -99,6 +99,13 @@ export const useHelpersStore = defineStore('helpers', {
 		]
 	}),
 	getters: {
+		getApi: (state) => (table) => {
+			if (process.env.NODE_ENV == "development") {
+				return "https://thxdreams.com/api/" + table + ".php?v=" + new Date().getTime()
+			}
+			console.log("table",table);
+			return "/api/"+table +".php?v=" + new Date().getTime()
+		},
 		getRoutes: (state) => {
 			const language = useLanguagesStore().language
 			return language == "eng" ? state.routes_eng : state.routes_esp;
@@ -116,7 +123,7 @@ export const useHelpersStore = defineStore('helpers', {
 	},
 	actions: {
 		async fetchFilters(column, language = null) {
-			let url = getApi('filters') + '?filter=' + column
+			let url = this.getApi('filters') + '&filter=' + column
 			if (useLanguagesStore().language == "eng") url = url + '&language=eng'
 			if (useLanguagesStore().language == "esp") url = url + '&language=esp'
 			await fetch(url)
@@ -136,7 +143,7 @@ export const useHelpersStore = defineStore('helpers', {
 			return true
 		},
 		async applyPrograms(body) {
-			let url = getApi('apply_programs')
+			let url = this.getApi('apply_programs')
 			await fetch(url, {
 				headers: {
 					'Accept': 'application/json',
@@ -159,16 +166,10 @@ export const useHelpersStore = defineStore('helpers', {
 			}
 		},
 		getImagePath(src) {
-			if (process.env.NODE_ENV == "development") {
-				return "https://phpstack-628703-4271081.cloudwaysapps.com/imgs/" + src;
-			}
+			// if (process.env.NODE_ENV == "development") {
+			// 	return "https://phpstack-628703-4271081.cloudwaysapps.com/imgs/" + src;
+			// }
 			return "https://thxdreams.com/img/"+src;
 		},
 	},
 })
-function getApi(table) {
-	if (process.env.NODE_ENV == "development") {
-		return "https://phpstack-628703-4271081.cloudwaysapps.com/api/" + table + ".php"
-	}
-	return "/api/" + table + ".php"
-}
