@@ -17,9 +17,11 @@ export const useDreamersStore = defineStore('dreamers', {
 	actions: {
 		async fetchFullDreamer(dreamerPath,id = 0) {
 			let url = `${useHelpersStore().getApi('dreamer')}&path=${(id == 0 ? dreamerPath.substring(1) : id)}`
+			// console.log("url",url);
 			await fetch(url)
-				.then(response => response.json())
-				.then(response => {
+			.then(response => response.json())
+			.then(response => {
+					// console.log("url", response);
 					this.dreamer = response
 				})
 				.catch((error) => console.log(error));

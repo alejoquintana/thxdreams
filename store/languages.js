@@ -48,6 +48,6 @@ function getLanguageJSON(lang) {
 	// if (process.env.NODE_ENV == "development") {
 	// 	return `http://localhost:3000/api/languages/texts-${lang}.json`
 	// }
-	return `api/languages/texts-${lang}.json`
+	return `/api/languages/texts-${lang}.json`
 	// return "/api/" + table + ".php"
 }

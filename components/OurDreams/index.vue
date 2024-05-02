@@ -2,56 +2,7 @@
 	<ParallaxBackground gradient>
 		<Transition name="fade">
 			<modal v-if="showModal" @closeModal="closeModal()">
-				<v-row v-if="dreamersStore.dreamer && dreamersStore.dreamer.id" style="max-width: 800px;" class="mt-4">
-					<v-col cols="12">
-						<v-responsive :aspect-ratio="16 / 9" class="ma-auto">
-							<iframe :src="dreamersStore.dreamer.video" class="w-100 h-100 rounded-xl" webkitallowfullscreen
-								mozallowfullscreen allowfullscreen frameBorder="0"></iframe>
-						</v-responsive>
-					</v-col>
-					<v-col cols="12" class=" px-8">
-						<v-row>
-							<v-col cols="12" md="8" class="pb-0">
-								<h1 class="text-white text-center text-lg-left">
-									{{ dreamersStore.dreamer.name }}
-								</h1>
-							</v-col>
-							<v-col cols="12" md="4" class="pt-0 d-flex justify-lg-end justify-center align-end">
-								<span class="fw-00 text-white">
-									<span v-if="dreamersStore.dreamer.country">{{ dreamersStore.dreamer.country }}</span>, <span
-										v-if="dreamersStore.dreamer.year && dreamersStore.dreamer.year != 0">{{
-										dreamersStore.dreamer.year }}</span>
-								</span>
-							</v-col>
-						</v-row>
-						<!-- <div class="text-white d-flex justify-space-between align-end">
-						</div> -->
-						<div class="text-white pt-4 fs-3--lgAndUp" v-html="dreamersStore.dreamer.text"></div>
-					</v-col>
-					<v-col cols="12" class="d-flex justify-center pt-0" v-if="dreamersStore.dreamer.grower">
-						<span class="text-white fs-4 fs-6--md fw-500">
-							Grower: {{ dreamersStore.dreamer.grower }}
-						</span>
-					</v-col>
-					<v-col cols="12" class="my-8 d-flex justify-center">
-						<v-row>
-							<v-col cols="12" lg="4" v-for="img, i in dreamersStore.dreamer.images.slice(0, 3)" :key="i"
-								style="max-height: 330px;">
-								<v-img :src="useHelpersStore().getImagePath('sonadores_fotos/' + img.id + '.jpg')"
-									class="h-100 rounded-xl" cover></v-img>
-							</v-col>
-						</v-row>
-					</v-col>
-					<v-col cols="12" class="d-flex justify-center">
-						<a variant="outlined" href="https://www.instagram.com/thx_dreams/" size="sm"
-							class="btn btn-outlined-white text-white">
-							<p>
-								<v-icon class="pe-2" icon="mdi-instagram" color="white"></v-icon>
-								Visit us @thx_Dreams
-							</p>
-						</a>
-					</v-col>
-				</v-row>
+				<DreamerInfo :dreamer="dreamersStore.dreamer" :isModal="true"></DreamerInfo>
 			</modal>
 		</Transition>
 		<div class="banner banner-primary my-6">
